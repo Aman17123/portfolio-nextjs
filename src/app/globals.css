@@ -3,15 +3,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Margarine&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-*{
+body, html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+}
+.font-margarine {
+  font-family: 'Margarine', cursive;
+}
+
+.font-noto-jp {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.font-fira-condensed {
+  font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+.font-fira-code {
+  font-family: 'Fira Code', monospace;
 }
 
 .white-bor {
