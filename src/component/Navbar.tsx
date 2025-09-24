@@ -26,7 +26,7 @@ export default function Navbar() {
                 <Briefcase className="w-8 h-8" />
               </button>
               <button className="hover:text-blue-400 transition transform hover:scale-110">
-                <Folder className="w-8 h-8" />
+                <Folder className="w-8 h-4" />
               </button>
             </div>
       </div>
