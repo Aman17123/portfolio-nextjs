@@ -1,5 +1,7 @@
 import Link from "next/link"
-import { User, Code2, Briefcase, Folder } from "lucide-react"
+import { FaUser, FaCode, FaBriefcase, FaFolderOpen, FaGithub, FaLinkedin } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
+
 
 export default function Navbar() {
   return(
@@ -15,19 +17,37 @@ export default function Navbar() {
             </div>
 
             {/* Menu icons */}
-            <div className="flex flex-col items-center space-y-6 text-white">
-              <button className="hover:text-blue-400 transition transform hover:scale-110">
-                <User className="w-8 h-8" />
+            <div className="flex flex-col items-center  space-y-6 text-white">
+              <button className="transition transform cursor-pointer hover:scale-110 hover:text-blue-500">
+                <FaUser className="w-8 h-8" />
               </button>
-              <button className="hover:text-blue-400 transition transform hover:scale-110">
-                <Code2 className="w-8 h-8" />
+              <button className="transition transform cursor-pointer hover:scale-110 hover:text-green-500">
+                <FaCode className="w-8 h-8" />
               </button>
-              <button className="hover:text-blue-400 transition transform hover:scale-110">
-                <Briefcase className="w-8 h-8" />
+              <button className="transition transform cursor-pointer hover:scale-110 hover:text-yellow-500">
+                <FaBriefcase className="w-8 h-8" />
               </button>
-              <button className="hover:text-blue-400 transition transform hover:scale-110">
-                <Folder className="w-8 h-8" />
+              <button className="transition transform cursor-pointer hover:scale-110 hover:text-purple-500">
+                <FaFolderOpen className="w-8 h-8" />
               </button>
+
+              <a href="https://github.com/Aman17123" target="_blank" rel="noopener noreferrer">
+                <button  className="transition transform cursor-pointer hover:scale-110 hover:text-[#6e5494] hover:shadow-lg">
+                  <FaGithub  className="w-8 h-8" />
+                </button>
+              </a>
+                <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
+                  <button className="transition transform cursor-pointer hover:scale-110 hover:text-[#0A66C2]">
+                    <FaLinkedin className="w-8 h-8" />
+                  </button>
+                </a>
+
+                <a href="https://leetcode.com/your-username" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
+                  <button className="transition transform cursor-pointer hover:scale-110 hover:text-[#FFA116]">
+                    <SiLeetcode className="w-8 h-8" />
+                  </button>
+                </a>
+
             </div>
       </div>
     </nav>
