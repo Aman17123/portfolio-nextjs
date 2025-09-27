@@ -13,6 +13,7 @@ export default function HomePage() {
       {/* Navbar */}
       <Top/>
       <Navbar />
+      <Hero/>
       
     </div>
   );
