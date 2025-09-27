@@ -1,7 +1,6 @@
 import { FaUser, FaCode, FaBriefcase, FaFolderOpen, FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 
-
 export default function Navbar() {
   return(
     <nav className="navbar -mt-10 fixed">

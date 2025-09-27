@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <div>
+    <div> 
       Hero Section
     </div>
   );
