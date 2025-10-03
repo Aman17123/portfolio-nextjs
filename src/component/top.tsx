@@ -37,7 +37,7 @@ export default function Top() {
 
   return (
     <div className="top ml-14">
-      <div className="w-full bg-[#1E1E1E] text-white h-10 flex items-center overflow-hidden">
+      <div className="w-full bg-[#1E1E1E]  text-white h-10 flex items-center overflow-hidden">
         {/* File name section */}
         <div className="px-3 bg-[#3A3A3A] h-full flex items-center">
           <span className="text-sm font-fira-code">AMAN_Portfolio.jsx</span>
