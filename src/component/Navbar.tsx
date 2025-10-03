@@ -14,7 +14,6 @@ export default function Navbar() {
               />
             </div>
 
-            {/* Menu icons */}
             <div className="flex flex-col items-center  space-y-6 text-white">
               <button className="transition transform cursor-pointer hover:scale-110 hover:text-blue-500">
                 <FaUser className="w-8 h-8" />

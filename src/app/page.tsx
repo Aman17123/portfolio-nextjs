@@ -14,6 +14,7 @@ export default function HomePage() {
       <Top/>
       <Navbar />
       <Hero/>
+      <Stack/>
       
     </div>
   );

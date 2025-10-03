@@ -19,7 +19,7 @@ export default function HeroSection() {
         </span>
         <br />
         <span
-          className="text-white block ml-6" // 👈 margin-left added here
+          className="text-white block ml-6" 
           style={{
             WebkitTextStroke: "1.2px #007ACC",
             paintOrder: "stroke fill",

@@ -41,7 +41,7 @@ export default function Top() {
         {/* File name section */}
         <div className="px-3 bg-[#3A3A3A] h-full flex items-center">
           <span className="text-sm font-fira-code">AMAN_Portfolio.jsx</span>
-        </div>
+        </div> 
 
         {/* Typing effect box */}
         <div className="flex flex-1 justify-center items-center">
