@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Fira+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Margarine&family=Noto+Sans+JP:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Margarine&display=swap');
@@ -51,3 +51,15 @@ body, html {
   animation: spin-slow 3s linear infinite; /* Adjust speed here */
 }
 
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* similar to gap-4 */
+  transition: all 0.5s ease-out;
+  transform: translateY(0) scale(1);
+}
+
+.skill-item:hover {
+  transform: translateY(-0.25rem) scale(1.1); /* same as hover:-translate-y-1 & hover:scale-110 */
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3)); /* same as hover:drop-shadow-[...] */
+}
