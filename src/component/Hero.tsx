@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function HeroSection() {
   return (
-    <section className="min-h-screen -mt-10 flex ml-14 flex-col justify-center items-start bg-[#1c1c1c] text-white px-6 md:px-16">
+    <section className="min-h-screen -mt-10 flex sm:ml-14 ml-0 flex-col justify-center items-start bg-[#1c1c1c] text-white px-6 md:px-16    ">
       {/* Heading */}
       <h1 className="text-5xl md:text-6xl font-fira-condensed font-extrabold tracking-tight leading-none">
         <span

@@ -3,7 +3,7 @@ import { SiLeetcode } from "react-icons/si";
 
 export default function Navbar() {
   return(
-    <nav className="navbar -mt-10 fixed">
+    <nav className="navbar -mt-10 fixed hidden sm:block  ">
       <div className="h-screen w-14 bg-[#252526] flex flex-col items-center  py-4 space-y-9">
             {/* Profile placeholder circle */}
             <div className="w-9 h-10 rounded-full mt-1 overflow-hidden border border-dashed border-gray-400 transition transform hover:scale-110">
