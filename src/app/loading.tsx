@@ -1,5 +1,5 @@
 "use client";
-
+// add a smooth right to left closing pagee after its timeout
 import { useState, useEffect } from "react";
 import "./globals.css";
 
