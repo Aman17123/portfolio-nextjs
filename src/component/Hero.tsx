@@ -1,65 +1,112 @@
-// app/components/HeroSection.jsx
 "use client";
-
 import { motion } from "framer-motion";
 
 export default function HeroSection() {
   return (
-    <section className="min-h-screen -mt-10 flex sm:ml-14 ml-0 flex-col justify-center items-start bg-[#1c1c1c] text-white px-6 md:px-16    ">
-      {/* Heading */}
-      <h1 className="text-5xl md:text-6xl font-fira-condensed font-extrabold tracking-tight leading-none">
-        <span
-          className="text-[#007ACC]"
-          style={{
-            WebkitTextStroke: "1.2px #1e1e1e",
-            paintOrder: "stroke fill",
-          }}
+    <section className="relative min-h-screen sm:ml-14 text-white px-6 md:px-12 lg:px-20 py-16 md:py-24 overflow-hidden">
+      {/* Background gradient matching Navbar */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#1c1c1c] via-[#2a2a2a] to-[#333333] z-0" />
+
+      {/* Neon radial glows */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/3 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-pink-500/5 rounded-full blur-3xl animate-pulse" />
+      </div>
+
+      {/* Hero content */}
+      <div className="relative z-10 max-w-6xl">
+        {/* Title */}
+        <div className="mb-8">
+          <motion.h1 
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-5xl md:text-6xl lg:text-7xl font-fira-condensed font-black uppercase tracking-tighter"
+          >
+            <motion.span
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="inline-block text-blue-400"
+              style={{ WebkitTextStroke: "1px #FFFFFF", color: "#007ACC" }}
+            >
+              FRONTEND
+            </motion.span>
+            <br />
+            <motion.span 
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+              className="text-white ml-0 sm:ml-4 md:ml-14 inline-block"
+            >
+              DEVELOPER
+            </motion.span>
+          </motion.h1>
+        </div>
+
+        {/* Description Paragraphs */}
+        <div className="space-y-6 text-lg md:text-xl font-fira-code leading-relaxed">
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+          >
+            <span className="text-blue-400 font-mono">&lt;student&gt;</span>{" "}
+            <span className="text-gray-200">
+              I'm Aman Nakoti, a B.Tech CS student who loves exploring the latest web
+              technologies to craft unique digital experiences.
+            </span>{" "}
+            <span className="text-blue-400 font-mono">&lt;/student&gt;</span>
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+          >
+            <span className="text-blue-400 font-mono">&lt;focus&gt;</span>{" "}
+            <span className="text-gray-200">
+              My focus is on clean code, performance, and user-friendly design.
+            </span>{" "}
+            <span className="text-blue-400 font-mono">&lt;/focus&gt;</span>
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.0, ease: "easeOut" }}
+          >
+            <span className="text-blue-400 font-mono">&lt;projects&gt;</span>{" "}
+            <span className="text-gray-200">Currently building projects with </span>
+            <span className="text-orange-400 font-semibold">Next.js</span>
+            <span className="text-gray-200">, </span>
+            <span className="text-orange-400 font-semibold">animations</span>
+            <span className="text-gray-200">, and </span>
+            <span className="text-orange-400 font-semibold">3D web</span>
+            <span className="text-gray-200"> experiences to stay ahead in the ever-evolving tech world.</span>{" "}
+            <span className="text-blue-400 font-mono">&lt;/projects&gt;</span>
+          </motion.p>
+        </div>
+
+        {/* CTA Button */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 1.2, ease: "easeOut" }}
+          className="mt-12"
         >
-          FRONTEND
-        </span>
-        <br />
-        <span
-          className="text-white block ml-6" 
-          style={{
-            WebkitTextStroke: "1.2px #007ACC",
-            paintOrder: "stroke fill",
-          }}
-        >
-          DEVELOPER
-        </span>
-      </h1>
-
-      <p className="mt-8 text-lg md:text-xl font-mono">
-        <span className="text-blue-500">&lt;student&gt;</span>{" "}
-        I’m Aman Nakoti a B.Tech CS student who loves exploring the latest web
-        technologies to craft unique digital experiences.{" "}
-        <span className="text-blue-500">&lt;/student&gt;</span>
-      </p>
-
-      <p className="mt-6 text-lg md:text-xl font-mono">
-        <span className="text-blue-500">&lt;focus&gt;</span>{" "}
-        My focus is on clean code, performance, and user-friendly design.{" "}
-        <span className="text-blue-500">&lt;/focus&gt;</span>
-      </p>
-
-      <p className="mt-6 text-lg md:text-xl font-mono">
-        <span className="text-blue-500">&lt;projects&gt;</span>{" "}
-        Currently building projects with{" "}
-        <span className="text-orange-400">Next.js</span>,{" "}
-        <span className="text-orange-400">animations</span>, and{" "}
-        <span className="text-orange-400">3D web</span> experiences to stay
-        ahead in the ever-evolving tech world.{" "}
-        <span className="text-blue-500">&lt;/projects&gt;</span>
-      </p>
-
-      <motion.a
-        href="#contact"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="mt-10 inline-block px-6 py-2 bg-blue-600 text-white font-bold font-mono rounded-full shadow-lg hover:bg-blue-700 transition"
-      >
-        &lt; HIRE ME /&gt;
-      </motion.a>
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-white font-bold text-lg px-8 py-3 rounded-full 
+              transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]
+              font-mono uppercase cursor-pointer tracking-wide"
+          >
+            &lt; HIRE ME /&gt;
+          </motion.button>
+        </motion.div>
+      </div>
     </section>
   );
 }

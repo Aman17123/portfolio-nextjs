@@ -4,7 +4,7 @@ import { SiJavascript, SiTypescript, SiThreedotjs, SiNextdotjs, SiTailwindcss, S
 
 export default function Stack() {
   return (
-    <section className="ml-14 bg-[#1c1c1c] min-h-screen flex flex-col text-white items-start pt-10">  
+    <section className="sm:ml-14 ml-0 bg-[#1c1c1c] min-h-screen flex flex-col text-white items-start pt-10">  
       <div className="flex items-center ml-14 space-x-6">
         {/* Spinning React Icon */}
         <FaReact className="w-14 h-14 animate-spin-slow spin-slow drop-shadow-[0_0_15px_#00f0ff]" />

@@ -1,5 +1,4 @@
 import Navbar from '../component/Navbar';
-import Top from '../component/top'
 import Hero from '../component/Hero';
 import Exper from '../component/Exper';
 import Projects from '../component/Projects';
@@ -11,7 +10,6 @@ export default function HomePage() {
   return (
     <div >
       {/* Navbar */}
-      <Top/>
       <Navbar />
       <Hero/>
       <Stack/>

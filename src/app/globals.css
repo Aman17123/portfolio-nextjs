@@ -10,6 +10,7 @@ body, html {
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 .font-margarine {
   font-family: 'Margarine', cursive;
