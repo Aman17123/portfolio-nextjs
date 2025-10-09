@@ -4,15 +4,7 @@ import { motion } from "framer-motion";
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen sm:ml-14 px-6 md:px-12 lg:px-20 py-16 md:py-24 overflow-hidden">
-      {/* Background gradient matching Navbar */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#1c1c1c] via-[#2a2a2a] to-[#333333] z-0" />
 
-      {/* Neon radial glows */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/3 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-pink-500/5 rounded-full blur-3xl animate-pulse" />
-      </div>
 
       {/* Hero content */}
       <div className="relative z-10 max-w-6xl text-white">

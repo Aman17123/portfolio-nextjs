@@ -5,27 +5,6 @@
 
 @import "tailwindcss";
 
-/* === Default Light Theme === */
-:root {
-  --bg: #ffffff;
-  --text: #111111;
-  --surface: #f4f4f4;
-}
-
-/* === Dark Theme === */
-[data-theme="dark"] {
-  --bg: #0b0b0b;
-  --text: #e5e5e5;
-  --surface: #1a1a1a;
-}
-
-/* === Apply Globally === */
-body {
-  background-color: var(--bg);
-  color: var(--text);
-  transition: background-color 0.4s ease, color 0.4s ease;
-}
-
 body, html {
   margin: 0;
   padding: 0;
@@ -59,7 +38,7 @@ body, html {
     font-size: 40px;
   }
 }
-/* Spin animation */
+
 @keyframes spin-slow {
   from {
     transform: rotate(0deg);
@@ -82,6 +61,6 @@ body, html {
 }
 
 .skill-item:hover {
-  transform: translateY(-0.25rem) scale(1.1); /* same as hover:-translate-y-1 & hover:scale-110 */
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3)); /* same as hover:drop-shadow-[...] */
+  transform: translateY(-0.25rem) scale(1.1);
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3)); 
 }
