@@ -33,3 +33,5 @@ npm install
 
 # Start the development server
 npm run dev
+npm run build 
+and there will be sign og high
