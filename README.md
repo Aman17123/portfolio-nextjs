@@ -36,3 +36,20 @@ npm run dev
 npm run build 
 and there will be sign og high
 and if i will br high i won't tell you but there will be signs my lil bro
+fook raha hu og naye seher me
+
+# Clone the repository
+git clone https://github.com/Aman17123/portfolio-nextjs.git
+
+# Navigate to the project folder
+cd portfolio-nextjs
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+npm run build 
+and there will be sign og high
+and if i will br high i won't tell you but there will be signs my lil bro
+fook raha hu og naye seher me
