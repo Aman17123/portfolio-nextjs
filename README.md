@@ -58,3 +58,16 @@ npm run build
 and there will be sign og high
 and if i will br high i won't tell you but there will be signs my lil bro
 fook raha hu og naye seher me
+
+
+npm run build 
+and there will be sign og high
+and if i will br high i won't tell you but there will be signs my lil bro
+fook raha hu og naye seher me
+npm run dev
+npm run build 
+and there will be sign og high
+and if i will br high i won't tell you but there will be signs my lil bro
+fook raha hu og naye seher me
+
+
