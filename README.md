@@ -53,3 +53,10 @@ npm run build
 
 
 
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js  
+- **Styling:** CSS / Tailwind CSS (if used)  
+- **Animations:** Framer Motion  
+- **Deployment:** Vercel (or your hosting platform)  
+

@@ -77,8 +77,8 @@ export default function Navbar() {
           {/* Social Links */}
           {[
             { Icon: FaGithub, color: "#6e5494", link: "https://github.com/Aman17123" },
-            { Icon: FaLinkedin, color: "#0A66C2", link: "https://www.linkedin.com/in/your-linkedin" },
-            { Icon: SiLeetcode, color: "#FFA116", link: "https://leetcode.com/your-username" },
+            { Icon: FaLinkedin, color: "#0A66C2", link: "https://www.linkedin.com/in/aman-nakoti/" },
+            { Icon: SiLeetcode, color: "#FFA116", link: "https://leetcode.com/u/amangate9897/" },
           ].map(({ Icon, color, link }, i) => (
             <motion.a
               key={i}
