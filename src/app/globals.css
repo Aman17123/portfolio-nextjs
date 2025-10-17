@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Margarine&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
 
 @import "tailwindcss";
 
@@ -24,6 +25,9 @@ body, html {
   font-family: 'Fira Sans Condensed', sans-serif;
 }
 
+.font-fjalla-one {
+  font-family: "Fjalla One", sans-serif;
+} 
 .font-fira-code {
   font-family: 'Fira Code', monospace;
 }

@@ -19,13 +19,10 @@ export default function Navbar() {
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="fixed top-0 left-0 hidden md:flex h-screen z-50"
     >
-      {/* Sidebar background with vibrant gradient */}
       <div className="relative w-16 bg-gradient-to-b from-[#1c1c1c] via-[#2a2a2a] to-[#333333] flex flex-col items-center py-5 space-y-10 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
         
-        {/* Floating glow behind profile */}
         <div className="absolute top-6 w-10 h-10 bg-gradient-to-r from-blue-600/30 via-purple-500/20 to-pink-500/20 blur-2xl rounded-full animate-pulse" />
-
-        {/* Profile Image */}
+        
         <motion.div
           whileHover={{ scale: 1.15, rotate: 6 }}
           transition={{ type: "spring", stiffness: 200, damping: 10 }}

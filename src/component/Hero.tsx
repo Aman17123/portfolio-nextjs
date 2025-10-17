@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import '../app/globals.css'
 
 export default function HeroSection() {
   return (
@@ -7,21 +8,20 @@ export default function HeroSection() {
 
 
       {/* Hero content */}
-      <div className="relative z-10 max-w-6xl text-white">
+      <div className="relative z-10 flex flex-col sm:mt-20  max-w-6xl text-white">
         {/* Title */}
         <div className="mb-8">
           <motion.h1 
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-5xl md:text-6xl lg:text-7xl font-fira-condensed font-black uppercase tracking-tighter"
+            className="text-5xl md:text-6xl lg:text-7xl font-fjalla-one font-black uppercase tracking-normal"
           >
             <motion.span
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="inline-block text-[#60A5FA]" // neon blue
-              style={{ WebkitTextStroke: "1px #FFFFFF" }}
+              className="inline-block text-[#60A5FA]"
             >
               FRONTEND
             </motion.span>
@@ -37,7 +37,6 @@ export default function HeroSection() {
           </motion.h1>
         </div>
 
-        {/* Description Paragraphs */}
         <div className="space-y-6 text-lg md:text-xl font-fira-code leading-relaxed">
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -65,39 +64,39 @@ export default function HeroSection() {
           </motion.p>
 
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.0, ease: "easeOut" }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.0, ease: "easeOut" }}
           >
-            <span className="text-[#60A5FA] font-mono">&lt;projects&gt;</span>{" "}
-            <span className="text-gray-300">Currently building projects with </span>
-            <span className="text-[#FBBF24] font-semibold">Next.js</span>
-            <span className="text-gray-300">, </span>
-            <span className="text-[#FBBF24] font-semibold">animations</span>
-            <span className="text-gray-300">, and </span>
-            <span className="text-[#FBBF24] font-semibold">3D web</span>
-            <span className="text-gray-300"> experiences to stay ahead in the ever-evolving tech world.</span>{" "}
-            <span className="text-[#60A5FA] font-mono">&lt;/projects&gt;</span>
+          <span className="text-[#60A5FA] font-mono">&lt;projects&gt;</span>{" "}
+          <span className="text-gray-300">Currently building projects with </span>
+          <span className="text-[#FBBF24] font-semibold">Next.js</span>
+          <span className="text-gray-300">, </span>
+          <span className="text-[#FBBF24] font-semibold">animations</span>
+          <span className="text-gray-300">, and </span>
+          <span className="text-[#FBBF24] font-semibold">3D web</span>
+          <span className="text-gray-300"> experiences to stay ahead in the ever-evolving tech world.</span>{" "}
+          <span className="text-[#60A5FA] font-mono">&lt;/projects&gt;</span>
           </motion.p>
         </div>
 
         {/* CTA Button */}
-        <motion.div 
+          <motion.div 
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 1.2, ease: "easeOut" }}
           className="mt-12"
-        >
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-white font-bold text-lg px-8 py-3 rounded-full 
-              transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]
-              font-mono uppercase cursor-pointer tracking-wide"
           >
-            &lt; HIRE ME /&gt;
+          <motion.button 
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className=" text-white font-bold text-lg px-8 py-3 rounded-full 
+          transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]
+          font-mono uppercase cursor-pointer tracking-wide"
+          >
+          &lt; RESUME /&gt;
           </motion.button>
-        </motion.div>
+          </motion.div>
       </div>
     </section>
   );

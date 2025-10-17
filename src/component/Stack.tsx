@@ -14,6 +14,7 @@ import {
   SiMongodb,
   SiNetlify,
 } from "react-icons/si";
+import '../app/globals.css'
 
 export default function Stack() {
   const sections = [
@@ -62,13 +63,9 @@ export default function Stack() {
           <FaReact className="w-14 h-14 text-cyan-400 drop-shadow-[0_0_15px_#00f0ff]" />
         </motion.div>
 
-        <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-left">
+        <h1 className="text-5xl md:text-6xl font-fjalla-one font-bold tracking-tight text-left">
           <span
             className="text-[#007ACC]"
-            style={{
-              WebkitTextStroke: "1.5px #1e1e1e",
-              paintOrder: "stroke fill",
-            }}
           >
             MY
           </span>{" "}
