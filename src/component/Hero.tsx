@@ -8,7 +8,7 @@ export default function HeroSection() {
 
 
       {/* Hero content */}
-      <div className="relative z-10 flex flex-col md:mt-15 max-w-6xl text-white">
+      <div className="relative z-10 flex flex-col md:mt-15 mt-4 max-w-6xl text-white">
         {/* Title */}
         <div className="mb-8">
         <motion.h1
