@@ -12,6 +12,7 @@ body, html {
   box-sizing: border-box;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  scrollbar-width: none;
 }
 .font-margarine {
   font-family: 'Margarine', cursive;
@@ -37,6 +38,7 @@ body, html {
   font-size: 80px;
 }
 
+
 @media (max-width: 640px) {
   .white-bor {
     font-size: 40px;
@@ -52,10 +54,6 @@ body, html {
   }
 }
 
-.spin-slow {
-  animation: spin-slow 3s linear infinite; /* Adjust speed here */
-}
-
 .skill-item {
   display: flex;
   align-items: center;
@@ -68,3 +66,4 @@ body, html {
   transform: translateY(-0.25rem) scale(1.1);
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3)); 
 }
+

@@ -8,33 +8,37 @@ export default function HeroSection() {
 
 
       {/* Hero content */}
-      <div className="relative z-10 flex flex-col sm:mt-20  max-w-6xl text-white">
+      <div className="relative z-10 flex flex-col md:mt-15 max-w-6xl text-white">
         {/* Title */}
         <div className="mb-8">
-          <motion.h1 
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-5xl md:text-6xl lg:text-7xl font-fjalla-one font-black uppercase tracking-normal"
+        <motion.h1
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-5xl md:text-6xl lg:text-7xl font-fjalla-one font-black uppercase tracking-normal"
+        >
+          <motion.span
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="inline-block text-[#60A5FA]"
           >
-            <motion.span
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="inline-block text-[#60A5FA]"
-            >
-              FRONTEND
-            </motion.span>
-            <br />
-            <motion.span 
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-              className="text-[#E5E5E5] ml-0 sm:ml-4 md:ml-14 inline-block" // soft white
-            >
-              DEVELOPER
-            </motion.span>
-          </motion.h1>
+            FRONTEND
+          </motion.span>
+          <br />
+          <motion.span
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="text-[#E5E5E5] ml-4 sm:ml-14 inline-block"
+          >
+            DEVELOPER
+          </motion.span>
+        </motion.h1>
+
         </div>
 
         <div className="space-y-6 text-lg md:text-xl font-fira-code leading-relaxed">
@@ -81,22 +85,24 @@ export default function HeroSection() {
         </div>
 
         {/* CTA Button */}
-          <motion.div 
+        <motion.div 
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 1.2, ease: "easeOut" }}
           className="mt-12"
-          >
+        >
           <motion.button 
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className=" text-white font-bold text-lg px-8 py-3 rounded-full 
-          transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]
-          font-mono uppercase cursor-pointer tracking-wide"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="text-white font-bold text-lg px-8 py-3 rounded-full 
+            border border-[#3b82f6] hover:border-[#60a5fa]
+            transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]
+            font-fjalla-one uppercase cursor-pointer tracking-wide" 
           >
-          &lt; RESUME /&gt;
+            &lt; RESUME /&gt;
           </motion.button>
-          </motion.div>
+        </motion.div>
+
       </div>
     </section>
   );
