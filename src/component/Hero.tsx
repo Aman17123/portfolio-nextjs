@@ -4,7 +4,7 @@ import '../app/globals.css'
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen sm:ml-14 px-6 md:px-12 lg:px-20 py-16 md:py-24 overflow-hidden">
+    <section id="about" className="relative min-h-screen sm:ml-14 px-6 md:px-12 lg:px-20 py-16 md:py-24 overflow-hidden">
 
 
       {/* Hero content */}

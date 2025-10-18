@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   FaUser,
@@ -12,19 +13,18 @@ import {
 import { SiLeetcode } from "react-icons/si";
 
 export default function Navbar() {
+  const [activeSection, setActiveSection] = useState("about");
+  const observerRef = useRef(null);
+
   const mainIcons = [
-    { Icon: FaUser, label: "About" },
-    { Icon: FaCode, label: "Skills" },
-    { Icon: FaBriefcase, label: "Work" },
-    { Icon: FaFolderOpen, label: "Projects" },
+    { Icon: FaUser, label: "About", id: "about" },
+    { Icon: FaCode, label: "Skills", id: "skills" },
+    { Icon: FaBriefcase, label: "Work", id: "experience" },
+    { Icon: FaFolderOpen, label: "Projects", id: "projects" },
   ];
 
   const socialIcons = [
-    {
-      Icon: FaGithub,
-      link: "https://github.com/Aman17123",
-      color: "#6e5494",
-    },
+    { Icon: FaGithub, link: "https://github.com/Aman17123", color: "#6e5494" },
     {
       Icon: SiLeetcode,
       link: "https://leetcode.com/u/amangate9897/",
@@ -37,6 +37,42 @@ export default function Navbar() {
     },
   ];
 
+  // Smooth scroll to section
+  const handleScroll = (id) => {
+    const section = document.getElementById(id);
+    if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
+    setActiveSection(id);
+  };
+
+  // Observe visible sections to auto highlight
+  useEffect(() => {
+    const sections = mainIcons
+      .map((s) => document.getElementById(s.id))
+      .filter(Boolean);
+
+    if (observerRef.current) observerRef.current.disconnect();
+
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        let mostVisible = entries.reduce(
+          (max, entry) =>
+            entry.intersectionRatio > max.intersectionRatio ? entry : max,
+          entries[0]
+        );
+        if (mostVisible && mostVisible.isIntersecting) {
+          setActiveSection(mostVisible.target.id);
+        }
+      },
+      {
+        threshold: [0, 0.25, 0.5, 0.75, 1],
+        rootMargin: "-10% 0px -40% 0px",
+      }
+    );
+
+    sections.forEach((s) => observerRef.current.observe(s));
+    return () => observerRef.current.disconnect();
+  }, []);
+
   return (
     <>
       {/* Desktop Sidebar */}
@@ -47,28 +83,27 @@ export default function Navbar() {
         className="fixed top-1/2 left-4 -translate-y-1/2 z-50 hidden md:flex"
       >
         <div className="w-14 h-[70vh] bg-black/60 backdrop-blur-md rounded-3xl flex flex-col items-center justify-center py-6 shadow-lg space-y-7">
-          <motion.div
-            className="flex flex-col items-center space-y-7 text-white"
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { delayChildren: 0.3, staggerChildren: 0.15 },
-              },
-            }}
-          >
-            {mainIcons.map(({ Icon }, i) => (
+          <div className="flex flex-col items-center space-y-7 text-white">
+            {mainIcons.map(({ Icon, id }, i) => (
               <motion.button
                 key={i}
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="cursor-pointer"
+                onClick={() => handleScroll(id)}
+                className="cursor-pointer relative"
               >
-                <Icon className="w-7 h-7 text-white" />
+                <Icon
+                  className={`w-7 h-7 transition-colors ${
+                    activeSection === id ? "text-blue-400" : "text-white"
+                  }`}
+                />
+                {activeSection === id && (
+                  <motion.div
+                    layoutId="dot"
+                    className="absolute -right-3 top-1/2 -translate-y-1/2 w-2 h-2 bg-blue-400 rounded-full"
+                  />
+                )}
               </motion.button>
             ))}
 
@@ -92,18 +127,18 @@ export default function Navbar() {
                 <Icon className="w-7 h-7 text-white" />
               </motion.a>
             ))}
-          </motion.div>
+          </div>
         </div>
       </motion.nav>
 
-      {/* Mobile Top Bar */}
+      {/* ✅ Mobile Top Bar (only social icons) */}
       <motion.nav
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="fixed top-3 left-1/2 -translate-x-1/2 z-50 flex md:hidden"
       >
-        <div className="px-6 py-3 bg-black/60 backdrop-blur-md rounded-full flex items-center justify-center space-x-8 shadow-md">
+        <div className="px-6 py-3 bg-black/60 backdrop-blur-md rounded-full flex items-center justify-center space-x-6 shadow-md">
           {socialIcons.map(({ Icon, link, color }, i) => (
             <motion.a
               key={i}
@@ -119,7 +154,7 @@ export default function Navbar() {
               transition={{ type: "spring", stiffness: 250 }}
               className="cursor-pointer"
             >
-              <Icon className="w-6 h-6 text-white" />
+              <Icon className="w-7 h-7 text-white" />
             </motion.a>
           ))}
         </div>

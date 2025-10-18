@@ -13,6 +13,7 @@ export default function HomePage() {
       <Navbar />
       <Hero/>
       <Stack/>
+      <Exper/>
       
     </div>
   );

@@ -48,7 +48,7 @@ export default function Stack() {
   };
 
   return (
-    <section className="min-h-screen w-full flex flex-col justify-center sm:ml-14 px-6 md:px-12 lg:px-20 py-5 md:py-24 bg-transparent">
+    <section id="skills" className="min-h-screen w-full flex flex-col justify-center sm:ml-14 px-6 md:px-12 lg:px-20 py-5 md:py-24 bg-transparent">
       {/* === Heading === */}
       <div className="mb-16">
         <motion.h1
