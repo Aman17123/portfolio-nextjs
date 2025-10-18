@@ -20,7 +20,7 @@ export default function Navbar() {
     { Icon: FaUser, label: "About", id: "about" },
     { Icon: FaCode, label: "Skills", id: "skills" },
     { Icon: FaBriefcase, label: "Work", id: "experience" },
-    { Icon: FaFolderOpen, label: "Projects", id: "projects" },
+    { Icon: FaFolderOpen, label: "Projects", id: "proj" },
   ];
 
   const socialIcons = [
