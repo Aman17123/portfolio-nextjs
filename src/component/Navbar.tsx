@@ -1,26 +1,44 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import { motion } from "framer-motion";
 import { FaUser, FaCode, FaBriefcase, FaFolderOpen, FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
+
+type IconItem = {
+  Icon: React.ElementType;
+  id: string;
+};
+
+type SocialItem = {
+  Icon: React.ElementType;
+  link: string;
+  color: string;
+};
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("about");
   const observerRef = useRef<IntersectionObserver | null>(null);
 
-  const mainIcons = [
-    { Icon: FaUser, id: "about" },
-    { Icon: FaCode, id: "skills" },
-    { Icon: FaBriefcase, id: "experience" },
-    { Icon: FaFolderOpen, id: "proj" },
-  ];
+  // memoize arrays to avoid re-creating each render (solves useEffect warning)
+  const mainIcons: IconItem[] = useMemo(
+    () => [
+      { Icon: FaUser, id: "about" },
+      { Icon: FaCode, id: "skills" },
+      { Icon: FaBriefcase, id: "experience" },
+      { Icon: FaFolderOpen, id: "proj" },
+    ],
+    []
+  );
 
-  const socialIcons = [
-    { Icon: FaGithub, link: "https://github.com/Aman17123", color: "#6e5494" },
-    { Icon: SiLeetcode, link: "https://leetcode.com/u/amangate9897/", color: "#FFA116" },
-    { Icon: FaLinkedin, link: "https://www.linkedin.com/in/aman-nakoti/", color: "#0A66C2" },
-  ];
+  const socialIcons: SocialItem[] = useMemo(
+    () => [
+      { Icon: FaGithub, link: "https://github.com/Aman17123", color: "#6e5494" },
+      { Icon: SiLeetcode, link: "https://leetcode.com/u/amangate9897/", color: "#FFA116" },
+      { Icon: FaLinkedin, link: "https://www.linkedin.com/in/aman-nakoti/", color: "#0A66C2" },
+    ],
+    []
+  );
 
   const handleScroll = (id: string) => {
     const section = document.getElementById(id);
@@ -31,7 +49,7 @@ export default function Navbar() {
   useEffect(() => {
     const sections = mainIcons
       .map((s) => document.getElementById(s.id))
-      .filter((s): s is HTMLElement => s !== null); // ✅ type guard
+      .filter((s): s is HTMLElement => s !== null); // type guard
 
     if (observerRef.current) observerRef.current.disconnect();
 
@@ -49,7 +67,7 @@ export default function Navbar() {
 
     sections.forEach((s) => observerRef.current?.observe(s));
     return () => observerRef.current?.disconnect();
-  }, []);
+  }, [mainIcons]); // added mainIcons to dependency array to satisfy ESLint
 
   return (
     <>

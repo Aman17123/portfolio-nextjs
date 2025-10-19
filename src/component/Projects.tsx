@@ -1,17 +1,26 @@
 "use client";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { FiExternalLink } from "react-icons/fi";
-import "../app/globals.css";
 import React, { useState, useRef } from "react";
+import "../app/globals.css";
+
+type Project = {
+  number: string;
+  title: string;
+  tech: string;
+  description: string;
+  image: string;
+  link: string;
+};
 
 export default function Projects() {
-  const projects = [
+  const projects: Project[] = [
     {
       number: "01",
       title: "GORAFTS",
       tech: "React.js · Tailwind CSS · EmailJS",
-      description:
-        "A modern website for a craft business with email integration.",
+      description: "A modern website for a craft business with email integration.",
       image:
         "https://i.pinimg.com/1200x/e6/d8/4d/e6d84d46649b25499b3b9525bb142991.jpg",
       link: "https://goraftts.netlify.app/#/",
@@ -45,10 +54,10 @@ export default function Projects() {
     },
   ];
 
-  const [hoveredProject, setHoveredProject] = useState(null);
-  const sectionRef = useRef(null);
+  const [hoveredProject, setHoveredProject] = useState<Project | null>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
 
-  const handleEnter = (proj) => setHoveredProject(proj);
+  const handleEnter = (proj: Project) => setHoveredProject(proj);
   const handleLeave = () => setHoveredProject(null);
 
   const IMAGE_WIDTH_MD = "200px";
@@ -62,6 +71,7 @@ export default function Projects() {
       id="proj"
       className="relative w-full flex flex-col justify-center sm:ml-14 px-6 md:px-12 lg:px-20 py-10 md:py-24 bg-transparent min-h-screen overflow-hidden z-20"
     >
+      {/* Section Title */}
       <div className="relative flex flex-col mb-16">
         <motion.h1
           className="text-5xl md:text-6xl font-fjalla-one font-bold tracking-tight text-left"
@@ -75,6 +85,7 @@ export default function Projects() {
         </motion.h1>
       </div>
 
+      {/* Projects List */}
       <div className="flex w-full relative">
         <div className="flex flex-col space-y-10 w-full md:w-3/4 relative z-10">
           {projects.map((proj, i) => (
@@ -101,55 +112,43 @@ export default function Projects() {
                     <FiExternalLink className="w-5 h-5 text-white group-hover:text-[#60A5FA] transition-colors" />
                   </a>
                 </div>
-                <p className="jetbrains-mono text-gray-400 text-sm md:text-base mt-2">
-                  {proj.tech}
-                </p>
-                <p className="jetbrains-mono text-gray-500 text-xs mt-1">
-                  {proj.description}
-                </p>
+                <p className="jetbrains-mono text-gray-400 text-sm md:text-base mt-2">{proj.tech}</p>
+                <p className="jetbrains-mono text-gray-500 text-xs mt-1">{proj.description}</p>
               </div>
             </motion.div>
           ))}
         </div>
 
+        {/* Hovered Project Preview */}
         <AnimatePresence>
           {hoveredProject && (
             <motion.img
               key={hoveredProject.image}
               src={hoveredProject.image}
-              alt="preview"
+              alt={hoveredProject.title}
               initial={{ opacity: 0, scale: 0.8 }}
-              animate={{
-                opacity: 1,
-                y: "10%",
-                x: "-50%",
-                scale: 1.5,
-              }}
+              animate={{ opacity: 1, y: "10%", x: "-50%", scale: 1.5 }}
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ type: "spring", stiffness: 150, damping: 18 }}
               className="absolute left-[87.5%] top-[50%] -translate-x-1/2 -translate-y-1/2 rounded-2xl shadow-2xl object-cover pointer-events-none z-30 hidden md:block"
               style={{
                 width: IMAGE_WIDTH_MD,
                 height: IMAGE_HEIGHT_MD,
-                "@media (max-width: 768px)": {
-                  width: IMAGE_WIDTH_SM,
-                  height: IMAGE_HEIGHT_SM,
-                },
               }}
             />
           )}
         </AnimatePresence>
       </div>
 
+      {/* Footer Email */}
       <div className="absolute bottom-4 w-full flex justify-center">
         <a
-          href="mailto:www.amannakoti@example.com"
+          href="mailto:www.amannakoti103@gmail.com"
           className="text-gray-400 font-fjalla-one text-sm sm:text-lg md:text-xl hover:text-[#60A5FA] transition-colors sm:-ml-50 -ml-15"
         >
           www.amannakoti103@gmail.com
         </a>
       </div>
-
     </section>
   );
 }
