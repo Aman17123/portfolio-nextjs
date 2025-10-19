@@ -4,17 +4,15 @@ import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import Preloader from "./Preloader";
 
-interface Star {
-  x: number;
-  y: number;
-  radius: number;
-  alpha: number;
-  vx: number;
-  vy: number;
-}
+// VS CODE THEME CONSTANTS
+const BG_COLOR = "#1e1e1e"; // Official VS Code Dark Theme Background
+const RULER_COLOR = "rgba(100, 100, 100, 0.05)"; // Even fainter gray for main lines
+const MARGIN_RULER_COLOR = "rgba(255, 255, 255, 0.03)"; // Faint white for the margin line
+const VSCODE_BLUE_GLOW = "rgba(0, 122, 204, 0.6)"; // VS Code Blue for the glow
 
 export default function ClientWrapper({ children }: { children: React.ReactNode }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const pulseRef = useRef(0); // For the subtle pulsing/shifting animation
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -22,73 +20,70 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
 
-    // Adjust star count based on screen size
-    const STAR_COUNT = Math.floor((width * height) / 5000); // auto scaling
-    const stars: Star[] = Array.from({ length: STAR_COUNT }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      radius: Math.random() * 1.5 + 0.5,
-      alpha: Math.random() * 0.7 + 0.3,
-      vx: (Math.random() - 0.5) * 0.05,
-      vy: (Math.random() - 0.5) * 0.05,
-    }));
+    const drawVSCodeRulers = (ctx: CanvasRenderingContext2D, w: number, h: number, time: number) => {
+      // Calculate the horizontal shift based on time for a subtle motion
+      const shift = Math.sin(time / 500) * 0.2; // Very slow, tiny horizontal oscillation
 
-    const mouse = { x: width / 2, y: height / 2 };
+      // 1. Draw Faint Vertical Lines (Mimicking code structure lines)
+      ctx.strokeStyle = RULER_COLOR;
+      ctx.lineWidth = 1;
+      const lineSpacing = 10; // 10px spacing for code characters
 
-    const animate = () => {
-      ctx.clearRect(0, 0, width, height);
-
-      // Background
-      ctx.fillStyle = "#000";
-      ctx.fillRect(0, 0, width, height);
-
-      const radiusInfluence = 150 * 150; // squared distance
-
-      // Draw stars
-      for (let i = 0; i < STAR_COUNT; i++) {
-        const star = stars[i];
-
-        star.x += star.vx;
-        star.y += star.vy;
-
-        // Wrap edges
-        if (star.x < 0) star.x = width;
-        if (star.x > width) star.x = 0;
-        if (star.y < 0) star.y = height;
-        if (star.y > height) star.y = 0;
-
-        // Cursor attraction (squared distance)
-        const dx = mouse.x - star.x;
-        const dy = mouse.y - star.y;
-        const distSq = dx * dx + dy * dy;
-        if (distSq < radiusInfluence) {
-          star.x += dx * 0.002;
-          star.y += dy * 0.002;
-        }
-
+      for (let x = 0; x < w; x += lineSpacing) {
         ctx.beginPath();
-        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(14,165,233,${star.alpha})`;
-        ctx.shadowBlur = 4;
-        ctx.shadowColor = "#0ea5e9";
-        ctx.fill();
+        // Apply the subtle horizontal shift
+        ctx.moveTo(x + shift, 0);
+        ctx.lineTo(x + shift, h);
+        ctx.stroke();
       }
 
+      // 2. Draw the Margin Ruler (The 80-character column)
+      const marginPosition = 800;
+      
+      const glowAlpha = 0.4 + Math.sin(time / 100) * 0.2; // Pulse the glow intensity slower
+      
+      // Apply the subtle VS Code blue glow
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = `rgba(0, 122, 204, ${glowAlpha})`;
+      
+      // Draw the slightly thicker, glowing ruler line
+      ctx.strokeStyle = MARGIN_RULER_COLOR;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(marginPosition + shift, 0); // Apply the same shift
+      ctx.lineTo(marginPosition + shift, h);
+      ctx.stroke();
+      
+      // Clear shadow for subsequent drawing (like the actual content)
+      ctx.shadowBlur = 0;
+    };
+
+    const animate = () => {
+      // 1. Clear with a semi-transparent layer for a "refreshing" effect
+      // This subtly fades out old frames, adding depth to the dark theme.
+      ctx.fillStyle = "rgba(30, 30, 30, 0.2)"; // Semi-transparent version of BG_COLOR
+      ctx.fillRect(0, 0, width, height);
+
+      // 2. Solid Background Layer (painted underneath the fade effect)
+      ctx.globalCompositeOperation = "destination-over";
+      ctx.fillStyle = BG_COLOR;
+      ctx.fillRect(0, 0, width, height);
+      ctx.globalCompositeOperation = "source-over";
+
+      pulseRef.current += 1; // Increment time counter
+
+      // Draw the grid and ruler
+      drawVSCodeRulers(ctx, width, height, pulseRef.current);
+      
       requestAnimationFrame(animate);
     };
 
     animate();
 
-    // Mouse movement
-    const handleMouseMove = (e: MouseEvent) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-    };
-
-    // Resize handler (throttled)
+    // Standard resize handling (optimized for performance)
     let resizeTimeout: NodeJS.Timeout;
     const handleResize = () => {
       clearTimeout(resizeTimeout);
@@ -98,11 +93,9 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
       }, 200);
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", handleResize);
       clearTimeout(resizeTimeout);
     };
@@ -110,10 +103,8 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
 
   return (
     <Preloader>
-      {/* Canvas Background */}
+      {/* Canvas remains the background */}
       <canvas ref={canvasRef} className="fixed inset-0 -z-10" />
-
-      {/* Content */}
       <motion.div
         className="relative z-10"
         initial="hidden"
