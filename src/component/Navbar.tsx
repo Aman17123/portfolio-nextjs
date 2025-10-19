@@ -29,14 +29,19 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    const sections = mainIcons.map((s) => document.getElementById(s.id)).filter(Boolean);
+    const sections = mainIcons
+      .map((s) => document.getElementById(s.id))
+      .filter((s): s is HTMLElement => s !== null); // ✅ type guard
+
     if (observerRef.current) observerRef.current.disconnect();
 
     observerRef.current = new IntersectionObserver(
       (entries) => {
-        const mostVisible = entries.reduce((max, entry) =>
-          entry.intersectionRatio > max.intersectionRatio ? entry : max
-        , entries[0]);
+        const mostVisible = entries.reduce(
+          (max, entry) =>
+            entry.intersectionRatio > max.intersectionRatio ? entry : max,
+          entries[0]
+        );
         if (mostVisible?.isIntersecting) setActiveSection(mostVisible.target.id);
       },
       { threshold: [0, 0.25, 0.5, 0.75, 1], rootMargin: "-10% 0px -40% 0px" }

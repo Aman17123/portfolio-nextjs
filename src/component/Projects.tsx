@@ -146,7 +146,7 @@ export default function Projects() {
           href="mailto:www.amannakoti@example.com"
           className="text-gray-400 font-fjalla-one text-sm sm:text-lg md:text-xl hover:text-[#60A5FA] transition-colors sm:-ml-50 -ml-15"
         >
-          www.amannakoti@example.com
+          www.amannakoti103@gmail.com
         </a>
       </div>
 
