@@ -1,6 +1,6 @@
 # 🌌 VSCode-Inspired Portfolio with Next.js & Framer Motion
 
-![Portfolio Screenshot](./public/FireShot Capture 002 - Aman_Portfolio - [portfolio-nextjs-sable-one.vercel.app].png)
+![Portfolio Screenshot](./public/12.png)
 
 Welcome to my **personal portfolio**, inspired by **VSCode** and infused with a subtle **Demon Slayer / dark anime vibe**. This project showcases my web development journey with modern tools, smooth animations, and interactive experiences.
 
