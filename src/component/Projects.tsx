@@ -18,38 +18,42 @@ export default function Projects() {
   const projects: Project[] = [
     {
       number: "01",
-      title: "GORAFTS",
-      tech: "React.js · Tailwind CSS · EmailJS",
-      description: "A modern website for a craft business with email integration.",
-      image:
-        "https://i.pinimg.com/1200x/e6/d8/4d/e6d84d46649b25499b3b9525bb142991.jpg",
-      link: "https://goraftts.netlify.app/#/",
-    },
-    {
-      number: "02",
-      title: "AI RESUME ENHANCER",
-      tech: "Next.js · OpenAI · Database",
-      description: ".work in process",
-      image:
-        "https://i.pinimg.com/1200x/e4/6a/da/e46ada02712a96616a5ccec8c32911e0.jpg",
-      link: "#",
-    },
-    {
-      number: "03",
-      title: "3D-PORTFOLIO",
-      tech: "React.js · ThreeJS · TailwindCSS",
-      description: "A 3D interactive portfolio built with Three.js.",
-      image:
-        "https://i.pinimg.com/736x/4f/a2/5f/4fa25f43d470ca223ac07112d64cc014.jpg",
-      link: "https://threejsaman.netlify.app/",
-    },
-    {
-      number: "04",
       title: "AMAZON CLONE",
       tech: "HTML5 · CSS3 · JavaScript",
       description: "A functional clone of the Amazon website.",
-      image:
-        "https://i.pinimg.com/736x/10/b8/61/10b861f89ef8dbf8be4e98401889d3ae.jpg",
+      image: "/amazon.png", // Ensure image is in public folder
+      link: "https://amazoncheckout.netlify.app/",
+    },
+    {
+      number: "02",
+      title: "3D-PORTFOLIO",
+      tech: "React.js · ThreeJS · TailwindCSS",
+      description: "A 3D interactive portfolio built with Three.js.",
+      image: "/3d.png",
+      link: "https://threejsaman.netlify.app/",
+    },
+    {
+      number: "03",
+      title: "GORAFTS",
+      tech: "React.js · Tailwind CSS · EmailJS",
+      description: "A modern website for a craft business with email integration.",
+      image: "/rafts.png",
+      link: "https://goraftsss.netlify.app/",
+    },
+    {
+      number: "04",
+      title: "PORTFOLIO WEBSITE",
+      tech: "NEXT.js · Tailwind CSS · Framer Motion",
+      description: "VS code theme based portfolio website.",
+      image: "/portfolio.png",
+      link: "https://portfolio-nextjs-sable-one.vercel.app/",
+    },
+    {
+      number: "05",
+      title: "AI RESUME ENHANCER",
+      tech: "Next.js · OpenAI · Database",
+      description: ".work in process",
+      image: "https://i.pinimg.com/1200x/e4/6a/da/e46ada02712a96616a5ccec8c32911e0.jpg",
       link: "#",
     },
   ];
@@ -61,9 +65,7 @@ export default function Projects() {
   const handleLeave = () => setHoveredProject(null);
 
   const IMAGE_WIDTH_MD = "200px";
-  const IMAGE_HEIGHT_MD = "330px";
-  const IMAGE_WIDTH_SM = "170px";
-  const IMAGE_HEIGHT_SM = "280px";
+  const IMAGE_HEIGHT_MD = "550px";
 
   return (
     <section
@@ -87,7 +89,8 @@ export default function Projects() {
 
       {/* Projects List */}
       <div className="flex w-full relative">
-        <div className="flex flex-col space-y-10 w-full md:w-3/4 relative z-10">
+        {/* Project Text */}
+        <div className="flex flex-col space-y-10 w-full md:w-3/4 relative z-20">
           {projects.map((proj, i) => (
             <motion.div
               key={i}
@@ -99,7 +102,7 @@ export default function Projects() {
               transition={{ duration: 0.6, delay: i * 0.15, ease: "easeOut" }}
               className="group relative flex flex-col sm:flex-row sm:items-center justify-between bg-transparent transition-all duration-300 rounded-xl p-6 cursor-pointer"
             >
-              <div className="relative z-10">
+              <div className="relative z-20">
                 <div className="flex items-center space-x-4">
                   <span className="text-white/80 text-3xl font-fjalla-one tracking-wider">{`<${proj.number}/>`}</span>
                   <a
@@ -119,7 +122,7 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Hovered Project Preview */}
+        {/* Hovered Project Image */}
         <AnimatePresence>
           {hoveredProject && (
             <motion.img
@@ -130,7 +133,7 @@ export default function Projects() {
               animate={{ opacity: 1, y: "10%", x: "-50%", scale: 1.5 }}
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ type: "spring", stiffness: 150, damping: 18 }}
-              className="absolute left-[87.5%] top-[50%] -translate-x-1/2 -translate-y-1/2 rounded-2xl shadow-2xl object-cover pointer-events-none z-30 hidden md:block"
+              className="absolute left-[87.5%] top-[50%] -translate-x-1/2 -translate-y-1/2 rounded-2xl shadow-2xl object-cover pointer-events-none z-10 hidden md:block"
               style={{
                 width: IMAGE_WIDTH_MD,
                 height: IMAGE_HEIGHT_MD,
@@ -144,7 +147,7 @@ export default function Projects() {
       <div className="absolute bottom-4 w-full flex justify-center">
         <a
           href="mailto:www.amannakoti103@gmail.com"
-          className="text-gray-400 font-fjalla-one text-sm sm:text-lg md:text-xl hover:text-[#60A5FA] transition-colors sm:-ml-50 -ml-15"
+          className="text-gray-400 font-fjalla-one text-sm sm:text-lg md:text-xl sm:-ml-70 -ml-10 hover:text-[#60A5FA] transition-colors"
         >
           www.amannakoti103@gmail.com
         </a>
