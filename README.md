@@ -13,7 +13,7 @@ Welcome to my **personal portfolio**, inspired by **VSCode** and infused with a 
 - **Framer Motion** – Smooth, responsive animations.  
 - **Responsive Design** – Optimized for mobile, tablet, and desktop.  
 - **Project Showcase** – Highlighting real-world projects with hover previews.  
-- **Dark Anime Vibe** – Aesthetic inspired by dark anime and glowing neon colors.  
+- **Dark Anime Vibe** – Aesthetic inspired by dark anime and glowing neon color.
 
 ---
 
