@@ -6,7 +6,7 @@ Welcome to my **personal portfolio**, inspired by **VSCode** and infused with a 
 
 ---
 
-## 🚀 Feature
+## 🚀 Features
 
 - **VSCode-inspired UI** – Clean, developer-friendly interface.  
 - **Next.js** – Fast SSR and SSG for modern web apps.  
