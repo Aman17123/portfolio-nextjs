@@ -9,7 +9,7 @@ Welcome to my **personal portfolio**, inspired by **VSCode** and infused with a 
 ## 🚀 Features
 
 - **VSCode-inspired UI** – Clean, developer-friendly interface.  
-- **Next.js** – Fast SSR and SSG for modern web apps.  
+- **Next.js** – Fast SSR and SSG for modeiiirn web apps.  
 - **Framer Motion** – Smooth, responsive animations.  
 - **Responsive Design** – Optimized for mobile, tablet, and desktop.  
 - **Project Showcase** – Highlighting real-world projects with hover previews.  
