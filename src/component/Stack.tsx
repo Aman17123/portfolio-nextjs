@@ -1,9 +1,31 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
-import { FaReact, FaNodeJs, FaGitAlt, FaFigma } from "react-icons/fa";
-import {SiJavascript,SiTypescript,SiThreedotjs,SiNextdotjs,SiTailwindcss,SiBootstrap,SiFramer,
-  SiNestjs,SiMongodb,SiNetlify,} from "react-icons/si";
+import {
+  FaReact,
+  FaNodeJs,
+  FaGitAlt,
+  FaFigma,
+  FaGithub,
+  FaHtml5,
+  FaCss3Alt,
+} from "react-icons/fa";
+import {
+  SiJavascript,
+  SiTypescript,
+  SiThreedotjs,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiBootstrap,
+  SiFramer,
+  SiMongodb,
+  SiNetlify,
+  SiExpress,
+  SiMongoose,
+  SiVercel,
+  SiSupabase,
+} from "react-icons/si";
 import "../app/globals.css";
 
 export default function Stack() {
@@ -11,9 +33,11 @@ export default function Stack() {
     {
       title: "FRONTEND",
       skills: [
+        { icon: FaHtml5, color: "text-orange-500", label: "HTML5" },
+        { icon: FaCss3Alt, color: "text-blue-400", label: "CSS3" },
         { icon: SiJavascript, color: "text-yellow-400", label: "JavaScript" },
         { icon: SiTypescript, color: "text-blue-500", label: "TypeScript" },
-        { icon: FaReact, color: "text-cyan-400", label: "React" },
+        { icon: FaReact, color: "text-cyan-400", label: "React.js" },
         { icon: SiNextdotjs, color: "text-white", label: "Next.js" },
         { icon: SiThreedotjs, color: "text-gray-300", label: "Three.js" },
         { icon: SiTailwindcss, color: "text-cyan-500", label: "Tailwind CSS" },
@@ -25,18 +49,35 @@ export default function Stack() {
       title: "BACKEND",
       skills: [
         { icon: FaNodeJs, color: "text-green-500", label: "Node.js" },
-        { icon: SiNestjs, color: "text-red-500", label: "NestJS" },
+        { icon: SiExpress, color: "text-gray-300", label: "Express.js" },
+        { icon: SiSupabase, color: "text-emerald-400", label: "Supabase" },
       ],
     },
     {
       title: "DATABASE",
-      skills: [{ icon: SiMongodb, color: "text-green-500", label: "MongoDB" }],
+      skills: [
+        {
+          icon: SiMongodb,
+          color: "text-green-400",
+          label: "MongoDB",
+          highlight: true,
+        },
+        { icon: SiMongoose, color: "text-red-400", label: "Mongoose" },
+        { icon: SiSupabase, color: "text-emerald-400", label: "Supabase" },
+      ],
     },
     {
       title: "TOOLS",
       skills: [
         { icon: FaGitAlt, color: "text-orange-500", label: "Git" },
+        { icon: FaGithub, color: "text-white", label: "GitHub" },
         { icon: FaFigma, color: "text-pink-500", label: "Figma" },
+      ],
+    },
+    {
+      title: "DEPLOYMENT",
+      skills: [
+        { icon: SiVercel, color: "text-white", label: "Vercel" },
         { icon: SiNetlify, color: "text-green-400", label: "Netlify" },
       ],
     },
@@ -48,10 +89,13 @@ export default function Stack() {
   };
 
   return (
-    <section id="skills" className="min-h-screen w-full flex flex-col justify-center sm:ml-14 px-6 md:px-12 lg:px-20 py-5 md:py-24 bg-transparent">
+    <section
+      id="skills"
+      className="min-h-screen w-full flex flex-col justify-center sm:ml-14 px-6 md:px-12 lg:px-20 py-5 md:py-24 bg-transparent"
+    >
       {/* === Heading === */}
       <div className="mb-16">
-        <motion.h1
+        <motion.h2
           className="text-5xl md:text-6xl font-fjalla-one font-bold tracking-tight text-left"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -61,7 +105,7 @@ export default function Stack() {
           <span className="text-[#60A5FA]">TECH</span>
           <br />
           <span className="text-white ml-4">STACK</span>
-        </motion.h1>
+        </motion.h2>
       </div>
 
       {/* === Skills Layout === */}
@@ -72,27 +116,55 @@ export default function Stack() {
             variants={sectionVariant}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }} // <-- trigger every time in view
+            viewport={{ once: false, amount: 0.3 }}
             className="flex flex-col gap-6"
           >
             {/* Section Title */}
-            <h2 className="text-[#9ca3af] font-fjalla-one text-3xl md:text-4xl uppercase text-left tracking-wide mb-4">
+            <h3 className="text-[#9ca3af] font-fjalla-one text-3xl md:text-4xl uppercase text-left tracking-wide mb-4">
               &lt;{section.title}/&gt;
-            </h2>
+            </h3>
 
             {/* Skills Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-              {section.skills.map(({ icon: Icon, color, label }, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <Icon className={`w-12 h-12 ${color}`} />
-                  <span className="text-white font-fjalla-one text-2xl font-normal">
-                    {label}
-                  </span>
-                </div>
-              ))}
+              {section.skills.map(
+                (
+                  {
+                    icon: Icon,
+                    color,
+                    label,
+                    highlight,
+                  }: {
+                    icon: React.ElementType;
+                    color: string;
+                    label: string;
+                    highlight?: boolean;
+                  },
+                  i: number,
+                ) => (
+                  <motion.div
+                    key={i}
+                    whileHover={{ y: -4, scale: 1.05 }}
+                    transition={{ duration: 0.2 }}
+                    className={`skill-item group flex items-center gap-3 rounded-xl px-4 py-3 transition-all duration-300 ${
+                      highlight
+                        ? "bg-green-500/10 border border-green-500/50 hover:border-green-400 hover:shadow-[0_0_20px_rgba(34,197,94,0.25)] relative"
+                        : "bg-white/3 border border-white/8 hover:border-blue-500/30"
+                    }`}
+                  >
+                    {highlight && (
+                      <span className="absolute -top-2 -right-2 bg-green-500 text-black text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                        Primary
+                      </span>
+                    )}
+                    <Icon className={`w-8 h-8 flex-shrink-0 ${color}`} />
+                    <span className="text-white font-fjalla-one text-lg font-normal">
+                      {label}
+                    </span>
+                  </motion.div>
+                ),
+              )}
             </div>
           </motion.div>
-
         ))}
       </div>
     </section>
