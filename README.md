@@ -1,7 +1,5 @@
 # 🌌 VSCode-Inspired Portfolio with Next.js & Framer Motion
 
-![Portfolio Screenshot](./public/portfolio.png)
-
 Welcome to my **personal portfolio**, inspired by **VSCode** and infused with a subtle **Demon Slayer / dark anime vibe**. This project showcases my web development journey with modern tools, smooth animations, and interactive experiences.
 
 ---
