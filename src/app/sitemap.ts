@@ -1,9 +1,11 @@
 import type { MetadataRoute } from "next";
 
+const SITE_URL = "https://amannakoti.vercel.app";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://amannakoti.vercel.app",
+      url: SITE_URL,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
