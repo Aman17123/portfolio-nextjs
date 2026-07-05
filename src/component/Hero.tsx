@@ -228,10 +228,10 @@ export default function HeroSection() {
             {/* Static blue glow */}
             <div className="absolute inset-0 rounded-full bg-blue-500/20 blur-xl scale-110" />
             {/* Photo container */}
-            <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-blue-500/50">
+            <div className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] rounded-full overflow-hidden border-2 border-blue-500/50">
               <Image
                 src="/avatar.png"
-                alt="Aman Nakoti — Frontend Developer and MERN Stack Developer from India"
+                alt="Aman Nakoti — Frontend Developer and MERN Stack Developer from Dehradun, India"
                 fill
                 className="object-cover object-top"
                 priority
