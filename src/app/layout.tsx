@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 import "./globals.css";
 
 import ClientWrapper from "../component/ClientWrapper";
@@ -174,6 +176,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <DisableRightClick />
           {children}
         </ClientWrapper>
+
+        <SpeedInsights />
       </body>
     </html>
   );
