@@ -127,24 +127,25 @@ export default function Projects() {
   return (
     <section
       id="proj"
-      className="relative w-full flex flex-col justify-center sm:ml-14 px-6 md:px-12 lg:px-20 py-10 md:py-24 bg-transparent min-h-screen overflow-hidden z-20"
+      className="relative w-full flex flex-col justify-center md:ml-14 px-6 md:px-12 lg:px-20 py-10 md:py-24 bg-transparent min-h-screen overflow-hidden z-20"
     >
-      {/* Section Title */}
-      <div className="relative flex flex-col mb-16">
-        <motion.h2
-          className="text-5xl md:text-6xl font-fjalla-one font-bold tracking-tight text-left"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <span className="text-[#60A5FA]">PROJECTS.</span>
-          <span className="text-white ml-1">JSX</span>
-        </motion.h2>
-      </div>
+      <div className="relative z-10 flex flex-col max-w-6xl mx-auto w-full">
+        {/* Section Title */}
+        <div className="relative flex flex-col mb-16">
+          <motion.h2
+            className="text-5xl md:text-6xl font-fjalla-one font-bold tracking-tight text-left"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <span className="text-[#60A5FA]">PROJECTS.</span>
+            <span className="text-white ml-1">JSX</span>
+          </motion.h2>
+        </div>
 
-      {/* Projects List */}
-      <div className="flex w-full relative">
+        {/* Projects List */}
+        <div className="flex w-full relative">
         {/* Project Text */}
         <div className="flex flex-col w-full md:w-3/4 relative z-20">
           {projects.map((proj, i) => (
@@ -191,6 +192,15 @@ export default function Projects() {
                 <p className="jetbrains-mono text-gray-300 text-xs md:text-sm mt-2 max-w-xl leading-relaxed">
                   {proj.description}
                 </p>
+
+                {/* Mobile project image preview */}
+                <div className="mt-4 block md:hidden w-full h-48 sm:h-64 relative rounded-xl overflow-hidden border border-white/10">
+                  <img
+                    src={proj.image}
+                    alt={`${proj.title} project preview`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
 
                 {/* Key Features */}
                 <div className="mt-3 flex flex-col gap-1 max-w-xl text-[11px] md:text-xs text-gray-500 font-mono">
@@ -253,6 +263,7 @@ export default function Projects() {
             />
           )}
         </AnimatePresence>
+      </div>
       </div>
     </section>
   );

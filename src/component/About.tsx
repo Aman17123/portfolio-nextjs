@@ -53,12 +53,12 @@ export default function About() {
   return (
     <section
       id="about-me"
-      className="relative w-full sm:ml-14 px-6 md:px-12 lg:px-20 py-16 md:py-24 overflow-hidden"
+      className="relative w-full md:ml-14 px-6 md:px-12 lg:px-20 py-16 md:py-24 overflow-hidden"
     >
       {/* Glow blob */}
       <div className="absolute top-1/2 left-1/3 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl pointer-events-none -translate-y-1/2" />
 
-      <div className="relative z-10 max-w-6xl">
+      <div className="relative z-10 max-w-6xl mx-auto">
         {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 40 }}

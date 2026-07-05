@@ -91,25 +91,26 @@ export default function Stack() {
   return (
     <section
       id="skills"
-      className="min-h-screen w-full flex flex-col justify-center sm:ml-14 px-6 md:px-12 lg:px-20 py-5 md:py-24 bg-transparent"
+      className="min-h-screen w-full flex flex-col justify-center md:ml-14 px-6 md:px-12 lg:px-20 py-5 md:py-24 bg-transparent"
     >
-      {/* === Heading === */}
-      <div className="mb-16">
-        <motion.h2
-          className="text-5xl md:text-6xl font-fjalla-one font-bold tracking-tight text-left"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <span className="text-[#60A5FA]">TECH</span>
-          <br />
-          <span className="text-white ml-4">STACK</span>
-        </motion.h2>
-      </div>
+      <div className="w-full max-w-6xl mx-auto flex flex-col">
+        {/* === Heading === */}
+        <div className="mb-16">
+          <motion.h2
+            className="text-5xl md:text-6xl font-fjalla-one font-bold tracking-tight text-left"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <span className="text-[#60A5FA]">TECH</span>
+            <br />
+            <span className="text-white ml-4">STACK</span>
+          </motion.h2>
+        </div>
 
-      {/* === Skills Layout === */}
-      <div className="w-full max-w-6xl mx-auto flex flex-col gap-16">
+        {/* === Skills Layout === */}
+        <div className="flex flex-col gap-16">
         {sections.map((section, idx) => (
           <motion.div
             key={idx}
@@ -166,6 +167,7 @@ export default function Stack() {
             </div>
           </motion.div>
         ))}
+        </div>
       </div>
     </section>
   );

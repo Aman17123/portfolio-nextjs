@@ -36,13 +36,13 @@ export default function HeroSection() {
   return (
     <section
       id="about"
-      className="relative min-h-screen sm:ml-14 px-6 md:px-12 lg:px-20 py-16 md:py-24 overflow-hidden"
+      className="relative min-h-screen md:ml-14 px-6 md:px-12 lg:px-20 py-16 md:py-24 overflow-hidden"
     >
       {/* Decorative glow blobs */}
       <div className="absolute top-20 left-0 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-12 max-w-7xl w-full">
+      <div className="relative z-10 flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-12 max-w-7xl w-full mx-auto">
         {/* ── LEFT: Text Content ── */}
         <div className="flex flex-col max-w-xl">
           {/* Availability Badge */}
@@ -228,7 +228,7 @@ export default function HeroSection() {
             {/* Static blue glow */}
             <div className="absolute inset-0 rounded-full bg-blue-500/20 blur-xl scale-110" />
             {/* Photo container */}
-            <div className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] rounded-full overflow-hidden border-2 border-blue-500/50">
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] rounded-full overflow-hidden border-2 border-blue-500/50">
               <Image
                 src="/avatar.png"
                 alt="Aman Nakoti — Frontend Developer and MERN Stack Developer from Dehradun, India"

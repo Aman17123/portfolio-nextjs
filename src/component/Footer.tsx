@@ -41,7 +41,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="relative w-full sm:ml-14 px-6 md:px-12 lg:px-20 pt-20 pb-10 overflow-hidden border-t border-white/5"
+      className="relative w-full md:ml-14 px-6 md:px-12 lg:px-20 pt-20 pb-10 overflow-hidden border-t border-white/5"
     >
       {/* Background glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-40 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />

@@ -65,9 +65,9 @@ export default function Exper() {
   return (
     <section
       id="experience"
-      className="relative min-h-screen sm:ml-14 px-6 md:px-12 lg:px-20 py-16 md:py-24 overflow-hidden"
+      className="relative min-h-screen md:ml-14 px-6 md:px-12 lg:px-20 py-16 md:py-24 overflow-hidden"
     >
-      <div className="relative z-10 flex flex-col space-y-1">
+      <div className="relative z-10 flex flex-col space-y-1 max-w-6xl mx-auto w-full">
         {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
