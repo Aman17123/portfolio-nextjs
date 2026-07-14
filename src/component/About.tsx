@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import "../app/globals.css";
 
 const stats = [
@@ -49,21 +50,43 @@ const whatIDo = [
   },
 ];
 
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, delay: i * 0.08, ease: "easeOut" as const },
+  }),
+};
+
 export default function About() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Subtle parallax — content moves slightly slower than scroll
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+
   return (
     <section
       id="about-me"
+      ref={sectionRef}
       className="relative w-full md:ml-14 px-6 md:px-12 lg:px-20 py-16 md:py-24 overflow-hidden"
     >
-      {/* Glow blob */}
-      <div className="absolute top-1/2 left-1/3 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl pointer-events-none -translate-y-1/2" />
+      {/* Glow blob with parallax */}
+      <motion.div
+        style={{ y: backgroundY }}
+        className="absolute top-1/2 left-1/3 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl pointer-events-none -translate-y-1/2"
+      />
 
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-5xl md:text-6xl lg:text-7xl font-fjalla-one font-black uppercase tracking-normal mb-12"
         >
@@ -77,7 +100,7 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex-1 space-y-6"
           >
@@ -114,27 +137,27 @@ export default function About() {
 
             <p className="text-gray-400 font-fira-code text-base leading-relaxed">
               I&apos;m also a state-level football player — the discipline and
-              teamwork from the field carry right into how I approach
-              development. When I&apos;m not coding, you&apos;ll find me solving
-              LeetCode challenges, exploring Three.js 3D experiences, or diving
-              into AI tooling.
+              teamwork from the field carry right into how I approach development.
+              When I&apos;m not coding, you&apos;ll find me solving LeetCode
+              challenges, exploring Three.js 3D experiences, or diving into AI
+              tooling.
             </p>
 
-            {/* Fun Facts */}
+            {/* Fun Facts — staggered */}
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
               {funFacts.map(({ emoji, text }, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  custom={i}
+                  variants={cardVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}
+                  whileHover={{ scale: 1.02, borderColor: "rgba(96,165,250,0.3)" }}
                   className="flex items-start gap-3 bg-white/3 border border-white/8 rounded-xl p-4 hover:border-blue-500/30 transition-colors"
                 >
                   <span className="text-2xl">{emoji}</span>
-                  <span className="text-gray-400 font-mono text-sm">
-                    {text}
-                  </span>
+                  <span className="text-gray-400 font-mono text-sm">{text}</span>
                 </motion.div>
               ))}
             </div>
@@ -144,23 +167,28 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex-shrink-0 flex flex-col items-center gap-6 w-full lg:w-[360px]"
           >
-            {/* Stats Grid */}
+            {/* Stats Grid — staggered scale-in */}
             <div className="grid grid-cols-2 gap-5 w-full">
               {stats.map(({ value, label }, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: false, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: i * 0.15 }}
-                  whileHover={{
-                    scale: 1.05,
-                    borderColor: "rgba(96,165,250,0.5)",
+                  custom={i}
+                  variants={{
+                    hidden: { opacity: 0, scale: 0.8 },
+                    visible: (i: number) => ({
+                      opacity: 1,
+                      scale: 1,
+                      transition: { duration: 0.5, delay: i * 0.12 },
+                    }),
                   }}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }}
+                  whileHover={{ scale: 1.05, borderColor: "rgba(96,165,250,0.5)" }}
                   className="flex flex-col items-center justify-center text-center bg-white/3 border border-white/10 rounded-2xl p-6 cursor-default"
                 >
                   <span className="text-4xl md:text-5xl font-fjalla-one text-[#60A5FA] mb-1">
@@ -178,14 +206,12 @@ export default function About() {
               {personalHighlights.map(({ icon, label, value, link }, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: false, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-                  whileHover={{
-                    scale: 1.02,
-                    borderColor: "rgba(96,165,250,0.4)",
-                  }}
+                  custom={i}
+                  variants={cardVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}
+                  whileHover={{ scale: 1.02, borderColor: "rgba(96,165,250,0.4)" }}
                   className="flex items-center gap-4 bg-white/3 border border-white/10 rounded-xl px-5 py-3 cursor-default"
                 >
                   <span className="text-2xl flex-shrink-0">{icon}</span>
@@ -218,7 +244,7 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="mt-20"
         >
@@ -229,10 +255,11 @@ export default function About() {
             {whatIDo.map(({ icon, title, desc }, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.3 }}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
+                custom={i}
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
                 whileHover={{ y: -4, borderColor: "rgba(96,165,250,0.4)" }}
                 className="group bg-white/3 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:bg-white/5 hover:shadow-[0_0_30px_rgba(59,130,246,0.08)]"
               >

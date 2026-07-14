@@ -1,26 +1,24 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Preloader from "./Preloader";
+import SmoothScrollProvider from "./SmoothScrollProvider";
+import ScrollProgress from "./ScrollProgress";
 
 const BG_COLOR = "#1e1e1e";
 const RULER_COLOR = "rgba(100, 100, 100, 0.05)";
 const MARGIN_RULER_COLOR = "rgba(255, 255, 255, 0.03)";
 
-export default function ClientWrapper({ children }: { children: React.ReactNode }) {
+export default function ClientWrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pulseRef = useRef(0);
+  const rafIdRef = useRef<number | null>(null);  // ← Fix: track RAF ID for cleanup
+  const frameCountRef = useRef(0);               // ← Fix: frame skipping for mobile
 
-  const wrapperRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(wrapperRef, { margin: "-50px 0px", once: true });
-  const [hasBeenVisible, setHasBeenVisible] = useState(false);
-
-  useEffect(() => {
-    if (isInView) setHasBeenVisible(true);
-  }, [isInView]);
-
-  // Canvas animation
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -30,7 +28,14 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    const drawRulers = (ctx: CanvasRenderingContext2D, w: number, h: number, time: number) => {
+    const isMobile = () => window.innerWidth < 768;
+
+    const drawRulers = (
+      ctx: CanvasRenderingContext2D,
+      w: number,
+      h: number,
+      time: number
+    ) => {
       const shift = Math.sin(time / 500) * 0.2;
 
       ctx.strokeStyle = RULER_COLOR;
@@ -44,7 +49,6 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
 
       const marginPos = 800;
       const glowAlpha = 0.4 + Math.sin(time / 100) * 0.2;
-
       ctx.shadowBlur = 10;
       ctx.shadowColor = `rgba(0, 122, 204, ${glowAlpha})`;
       ctx.strokeStyle = MARGIN_RULER_COLOR;
@@ -57,9 +61,11 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
     };
 
     const animate = () => {
-      // Mobile throttling
-      if (window.innerWidth < 768) {
-        setTimeout(() => requestAnimationFrame(animate), 100);
+      frameCountRef.current++;
+
+      // On mobile, render only every 6th frame (~10 FPS) to save battery
+      if (isMobile() && frameCountRef.current % 6 !== 0) {
+        rafIdRef.current = requestAnimationFrame(animate);
         return;
       }
 
@@ -74,12 +80,12 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
       pulseRef.current += 1;
       drawRulers(ctx, width, height, pulseRef.current);
 
-      requestAnimationFrame(animate);
+      rafIdRef.current = requestAnimationFrame(animate); // ← Fix: store the ID
     };
 
-    animate();
+    rafIdRef.current = requestAnimationFrame(animate);
 
-    let resizeTimeout: NodeJS.Timeout;
+    let resizeTimeout: ReturnType<typeof setTimeout>;
     const handleResize = () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
@@ -91,24 +97,20 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
     window.addEventListener("resize", handleResize);
 
     return () => {
+      // ← Fix: cancel RAF on unmount — no more memory leak
+      if (rafIdRef.current !== null) cancelAnimationFrame(rafIdRef.current);
       window.removeEventListener("resize", handleResize);
       clearTimeout(resizeTimeout);
     };
   }, []);
 
   return (
-    <Preloader>
-      <canvas ref={canvasRef} className="fixed inset-0 -z-10" />
-      <div ref={wrapperRef}>
-        <motion.div
-          className="relative z-10"
-          initial={{ opacity: 0, y: 50 }}
-          animate={hasBeenVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          {children}
-        </motion.div>
-      </div>
-    </Preloader>
+    <SmoothScrollProvider>
+      <Preloader>
+        <ScrollProgress />
+        <canvas ref={canvasRef} className="fixed inset-0 -z-10" aria-hidden="true" />
+        <div className="relative z-10">{children}</div>
+      </Preloader>
+    </SmoothScrollProvider>
   );
 }

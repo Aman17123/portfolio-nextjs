@@ -12,6 +12,7 @@ import {
   FaInfoCircle,
 } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
+import { useLenis } from "./SmoothScrollProvider";
 
 type IconItem = {
   Icon: React.ElementType;
@@ -27,6 +28,7 @@ type SocialItem = {
 };
 
 export default function Navbar() {
+  const lenis = useLenis();
   const [activeSection, setActiveSection] = useState("about");
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -39,7 +41,7 @@ export default function Navbar() {
       { Icon: FaBriefcase, id: "experience", tooltip: "Experience" },
       { Icon: FaFolderOpen, id: "proj", tooltip: "Projects" },
     ],
-    [],
+    []
   );
 
   const socialIcons: SocialItem[] = useMemo(
@@ -63,15 +65,22 @@ export default function Navbar() {
         tooltip: "LinkedIn",
       },
     ],
-    [],
+    []
   );
 
+  // Smooth scroll via Lenis (falls back to native if Lenis not available)
   const handleScroll = (id: string) => {
     const section = document.getElementById(id);
-    section?.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (!section) return;
     setActiveSection(id);
+    if (lenis) {
+      lenis.scrollTo(section, { offset: 0, duration: 1.2 });
+    } else {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
+  // IntersectionObserver to highlight active section
   useEffect(() => {
     const sections = mainIcons
       .map((s) => document.getElementById(s.id))
@@ -84,12 +93,12 @@ export default function Navbar() {
         const mostVisible = entries.reduce(
           (max, entry) =>
             entry.intersectionRatio > max.intersectionRatio ? entry : max,
-          entries[0],
+          entries[0]
         );
         if (mostVisible?.isIntersecting)
           setActiveSection(mostVisible.target.id);
       },
-      { threshold: [0, 0.25, 0.5, 0.75, 1], rootMargin: "-10% 0px -40% 0px" },
+      { threshold: [0, 0.25, 0.5, 0.75, 1], rootMargin: "-10% 0px -40% 0px" }
     );
 
     sections.forEach((s) => observerRef.current?.observe(s));
@@ -104,6 +113,7 @@ export default function Navbar() {
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="fixed top-1/2 left-4 -translate-y-1/2 z-50 hidden md:flex"
+        aria-label="Site navigation"
       >
         <div className="w-14 h-auto bg-black/60 backdrop-blur-md rounded-3xl flex flex-col items-center justify-center py-6 space-y-7">
           {mainIcons.map(({ Icon, id, tooltip }, i) => (
@@ -128,8 +138,8 @@ export default function Navbar() {
                 onClick={() => handleScroll(id)}
                 onMouseEnter={() => setHoveredId(`nav-${id}`)}
                 onMouseLeave={() => setHoveredId(null)}
-                className="relative"
-                aria-label={tooltip}
+                className="relative focus-visible:outline-2 focus-visible:outline-blue-400 focus-visible:outline-offset-2 rounded-sm"
+                aria-label={`Navigate to ${tooltip}`}
               >
                 <Icon
                   className={`w-7 h-7 ${activeSection === id ? "text-blue-400" : "text-white"}`}
@@ -163,16 +173,12 @@ export default function Navbar() {
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{
-                  scale: 1.25,
-                  color,
-                  textShadow: `0 0 10px ${color}`,
-                }}
+                whileHover={{ scale: 1.25, color, textShadow: `0 0 10px ${color}` }}
                 whileTap={{ scale: 0.9 }}
                 onMouseEnter={() => setHoveredId(`social-${i}`)}
                 onMouseLeave={() => setHoveredId(null)}
-                className="cursor-pointer"
-                aria-label={tooltip}
+                className="cursor-pointer focus-visible:outline-2 focus-visible:outline-blue-400 focus-visible:outline-offset-2 rounded-sm"
+                aria-label={`Visit Aman Nakoti's ${tooltip}`}
               >
                 <Icon className="w-7 h-7 text-white" />
               </motion.a>
@@ -187,6 +193,7 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="fixed top-3 left-1/2 -translate-x-1/2 z-50 flex md:hidden"
+        aria-label="Site navigation"
       >
         <div className="px-6 py-3 bg-black/60 backdrop-blur-md rounded-full flex items-center justify-center space-x-6">
           {mainIcons.map(({ Icon, id, tooltip }, i) => (
@@ -195,8 +202,8 @@ export default function Navbar() {
               whileHover={{ scale: 1.25 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => handleScroll(id)}
-              aria-label={tooltip}
-              className="cursor-pointer"
+              aria-label={`Navigate to ${tooltip}`}
+              className="cursor-pointer focus-visible:outline-2 focus-visible:outline-blue-400 focus-visible:outline-offset-2 rounded-sm"
             >
               <Icon
                 className={`w-5 h-5 ${activeSection === id ? "text-blue-400" : "text-white"}`}
@@ -212,8 +219,8 @@ export default function Navbar() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.25, color }}
               whileTap={{ scale: 0.9 }}
-              className="cursor-pointer"
-              aria-label={tooltip}
+              className="cursor-pointer focus-visible:outline-2 focus-visible:outline-blue-400 focus-visible:outline-offset-2 rounded-sm"
+              aria-label={`Visit Aman Nakoti's ${tooltip}`}
             >
               <Icon className="w-5 h-5 text-white" />
             </motion.a>

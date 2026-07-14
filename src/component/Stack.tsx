@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import {
   FaReact,
   FaNodeJs,
@@ -28,8 +28,38 @@ import {
 } from "react-icons/si";
 import "../app/globals.css";
 
+// ─── Stagger variants ─────────────────────────────────────────────────────────
+const containerVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.07 },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 24, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.45, ease: [0.33, 1, 0.68, 1] as [number, number, number, number] },
+  },
+};
+
+const sectionVariant: Variants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+type SkillItem = {
+  icon: React.ElementType;
+  color: string;
+  label: string;
+  highlight?: boolean;
+};
+
 export default function Stack() {
-  const sections = [
+  const sections: { title: string; skills: SkillItem[] }[] = [
     {
       title: "FRONTEND",
       skills: [
@@ -63,7 +93,7 @@ export default function Stack() {
           highlight: true,
         },
         { icon: SiMongoose, color: "text-red-400", label: "Mongoose" },
-        { icon: SiSupabase, color: "text-emerald-400", label: "Supabase" },
+        // Fixed: removed duplicate Supabase that was here before
       ],
     },
     {
@@ -83,24 +113,19 @@ export default function Stack() {
     },
   ];
 
-  const sectionVariant = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
-
   return (
     <section
       id="skills"
       className="min-h-screen w-full flex flex-col justify-center md:ml-14 px-6 md:px-12 lg:px-20 py-5 md:py-24 bg-transparent"
     >
       <div className="w-full max-w-6xl mx-auto flex flex-col">
-        {/* === Heading === */}
+        {/* Heading */}
         <div className="mb-16">
           <motion.h2
             className="text-5xl md:text-6xl font-fjalla-one font-bold tracking-tight text-left"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <span className="text-[#60A5FA]">TECH</span>
@@ -109,46 +134,39 @@ export default function Stack() {
           </motion.h2>
         </div>
 
-        {/* === Skills Layout === */}
+        {/* Skills Layout — staggered per section */}
         <div className="flex flex-col gap-16">
-        {sections.map((section, idx) => (
-          <motion.div
-            key={idx}
-            variants={sectionVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
-            className="flex flex-col gap-6"
-          >
-            {/* Section Title */}
-            <h3 className="text-[#9ca3af] font-fjalla-one text-3xl md:text-4xl uppercase text-left tracking-wide mb-4">
-              &lt;{section.title}/&gt;
-            </h3>
+          {sections.map((section, idx) => (
+            <motion.div
+              key={idx}
+              variants={sectionVariant}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              className="flex flex-col gap-6"
+            >
+              {/* Section Title */}
+              <h3 className="text-[#9ca3af] font-fjalla-one text-3xl md:text-4xl uppercase text-left tracking-wide mb-4">
+                &lt;{section.title}/&gt;
+              </h3>
 
-            {/* Skills Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-              {section.skills.map(
-                (
-                  {
-                    icon: Icon,
-                    color,
-                    label,
-                    highlight,
-                  }: {
-                    icon: React.ElementType;
-                    color: string;
-                    label: string;
-                    highlight?: boolean;
-                  },
-                  i: number,
-                ) => (
+              {/* Skills Grid with stagger */}
+              <motion.div
+                className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.1 }}
+              >
+                {section.skills.map(({ icon: Icon, color, label, highlight }, i) => (
                   <motion.div
                     key={i}
-                    whileHover={{ y: -4, scale: 1.05 }}
+                    variants={cardVariants}
+                    whileHover={{ y: -4, scale: 1.06 }}
                     transition={{ duration: 0.2 }}
-                    className={`skill-item group flex items-center gap-3 rounded-xl px-4 py-3 transition-all duration-300 ${
+                    className={`skill-item group relative flex items-center gap-3 rounded-xl px-4 py-3 transition-all duration-300 ${
                       highlight
-                        ? "bg-green-500/10 border border-green-500/50 hover:border-green-400 hover:shadow-[0_0_20px_rgba(34,197,94,0.25)] relative"
+                        ? "bg-green-500/10 border border-green-500/50 hover:border-green-400 hover:shadow-[0_0_20px_rgba(34,197,94,0.25)]"
                         : "bg-white/3 border border-white/8 hover:border-blue-500/30"
                     }`}
                   >
@@ -162,11 +180,10 @@ export default function Stack() {
                       {label}
                     </span>
                   </motion.div>
-                ),
-              )}
-            </div>
-          </motion.div>
-        ))}
+                ))}
+              </motion.div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

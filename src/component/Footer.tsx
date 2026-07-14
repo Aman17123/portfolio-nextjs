@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import { FiArrowUp } from "react-icons/fi";
+import { useLenis } from "./SmoothScrollProvider";
 import "../app/globals.css";
 
 const socials = [
@@ -34,8 +35,14 @@ const socials = [
 ];
 
 export default function Footer() {
+  const lenis = useLenis();
+
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (lenis) {
+      lenis.scrollTo(0, { duration: 1.4 });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   return (
@@ -51,7 +58,7 @@ export default function Footer() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-fjalla-one font-black uppercase text-white mb-4">
@@ -59,8 +66,15 @@ export default function Footer() {
             <br />
             TOGETHER.
           </h2>
+          {/* Fixed: was rendering **markdown** literally */}
           <p className="text-gray-400 font-mono text-base max-w-2xl mx-auto leading-relaxed">
-            I am actively looking for **Internships**, **Frontend Developer roles**, and **MERN Stack Developer opportunities**. Whether you are a recruiter, a business seeking a freelance solution, or a fellow developer wanting to collaborate, feel free to reach out. Let&apos;s build something high-performance together!
+            I am actively looking for{" "}
+            <strong className="text-gray-200">Internships</strong>,{" "}
+            <strong className="text-gray-200">Frontend Developer roles</strong>, and{" "}
+            <strong className="text-gray-200">MERN Stack Developer opportunities</strong>.
+            Whether you are a recruiter, a business seeking a freelance solution, or a
+            fellow developer wanting to collaborate, feel free to reach out. Let&apos;s
+            build something high-performance together!
           </p>
         </motion.div>
 
@@ -68,7 +82,7 @@ export default function Footer() {
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-col sm:flex-row items-center gap-4"
         >
@@ -86,7 +100,7 @@ export default function Footer() {
             SAY HELLO
           </motion.a>
 
-          {/* Download Resume — /public/resume.pdf */}
+          {/* Download Resume */}
           <motion.a
             href="/resume.pdf"
             target="_blank"
@@ -108,7 +122,7 @@ export default function Footer() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex items-center gap-6"
         >
@@ -134,7 +148,10 @@ export default function Footer() {
 
         {/* Footer SEO Paragraph */}
         <p className="text-[11px] md:text-xs text-gray-500 max-w-2xl mx-auto leading-relaxed mt-2 font-mono">
-          Aman Nakoti — B.Tech Computer Science student at Uttaranchal University, Dehradun (8.3 CGPA). Specializing as a Frontend Developer in India and MERN Stack Developer building responsive, animated, and high-performance Web Developer Portfolios and custom e-commerce web applications.
+          Aman Nakoti — B.Tech Computer Science student at Uttaranchal University,
+          Dehradun (8.3 CGPA). Specializing as a Frontend Developer in India and MERN
+          Stack Developer building responsive, animated, and high-performance Web
+          Developer Portfolios and custom e-commerce web applications.
         </p>
 
         {/* Divider */}
@@ -144,7 +161,7 @@ export default function Footer() {
         <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-600 text-sm font-mono text-center sm:text-left">
           <span>
             Designed &amp; Built by{" "}
-            <span className="text-gray-400">Aman Nakoti</span> ©{" "}
+            <span className="text-gray-400">Aman Nakoti</span> &copy;{" "}
             {new Date().getFullYear()}
           </span>
           <span className="text-gray-600">
@@ -152,7 +169,7 @@ export default function Footer() {
             <span className="text-pink-500">Framer Motion</span>
           </span>
 
-          {/* Back to top */}
+          {/* Back to top — Lenis scrollTo(0) */}
           <motion.button
             onClick={scrollToTop}
             whileHover={{ scale: 1.1, y: -2 }}

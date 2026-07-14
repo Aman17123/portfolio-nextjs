@@ -110,7 +110,7 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = {
+const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Aman Nakoti",
@@ -121,13 +121,11 @@ const jsonLd = {
   description:
     "B.Tech Computer Science student and MERN Stack Developer specializing in React, Next.js, Node.js, Express.js, MongoDB, Tailwind CSS, and modern web development.",
   email: "mailto:www.amannakoti103@gmail.com",
-
   sameAs: [
     "https://github.com/Aman17123",
     "https://www.linkedin.com/in/aman-nakoti/",
     "https://leetcode.com/u/amangate9897/",
   ],
-
   knowsAbout: [
     "React.js",
     "Next.js",
@@ -152,6 +150,28 @@ const jsonLd = {
   ],
 };
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Aman Nakoti Portfolio",
+  url: SITE_URL,
+  description:
+    "Portfolio of Aman Nakoti, a MERN Stack and Frontend Developer from India specializing in React, Next.js, Node.js, and modern web development.",
+  author: {
+    "@type": "Person",
+    name: "Aman Nakoti",
+  },
+  inLanguage: "en-IN",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${SITE_URL}/?q={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
+};
+
 type RootLayoutProps = Readonly<{
   children: ReactNode;
 }>;
@@ -163,7 +183,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd),
+            __html: JSON.stringify([personJsonLd, websiteJsonLd]),
           }}
         />
       </head>
