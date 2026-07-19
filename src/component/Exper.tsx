@@ -133,7 +133,7 @@ export default function Exper() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="text-[#E5E5E5] ml-5 inline-block"
+            className="text-gray-800 dark:text-[#E5E5E5] ml-5 inline-block"
           >
             CERTIFICATES
           </motion.span>
@@ -142,7 +142,7 @@ export default function Exper() {
         {/* Timeline */}
         <div className="relative mt-4" ref={timelineRef}>
           {/* Scroll-driven animated vertical line */}
-          <div className="absolute left-0 top-0 bottom-0 w-px ml-3 hidden md:block bg-white/5">
+          <div className="absolute left-0 top-0 bottom-0 w-px ml-3 hidden md:block bg-black/5 dark:bg-white/5">
             <motion.div
               className="w-full bg-gradient-to-b from-blue-500/80 via-blue-400/40 to-transparent origin-top"
               style={{ scaleY: lineHeight, height: "100%" }}
@@ -166,7 +166,7 @@ export default function Exper() {
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.14 + 0.1 }}
-                  className="absolute left-0 top-2 w-6 h-6 rounded-full border-2 border-blue-500 bg-[#0f172a] hidden md:flex items-center justify-center"
+                  className="absolute left-0 top-2 w-6 h-6 rounded-full border-2 border-blue-500 bg-slate-100 dark:bg-[#0f172a] hidden md:flex items-center justify-center"
                 >
                   <div className="w-2 h-2 rounded-full bg-blue-400" />
                 </motion.div>
@@ -175,7 +175,7 @@ export default function Exper() {
                 <motion.div
                   whileHover={{ scale: 1.01, borderColor: "rgba(96,165,250,0.4)" }}
                   transition={{ duration: 0.2 }}
-                  className="group bg-white/3 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:bg-white/5"
+                  className="group bg-black/5 dark:bg-white/3 border border-black/10 dark:border-white/10 rounded-2xl p-6 transition-all duration-300 hover:bg-white/5"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
                     <div>
@@ -188,15 +188,15 @@ export default function Exper() {
                         {exp.title}
                       </h3>
                     </div>
-                    <span className="text-gray-500 font-mono text-sm whitespace-nowrap mt-1 sm:mt-0 border border-white/10 rounded-full px-3 py-0.5 h-fit">
+                    <span className="text-gray-400 dark:text-gray-500 font-mono text-sm whitespace-nowrap mt-1 sm:mt-0 border border-black/10 dark:border-white/10 rounded-full px-3 py-0.5 h-fit">
                       {exp.period}
                     </span>
                   </div>
 
-                  <p className="text-gray-300 jetbrains-mono font-medium mb-1">
+                  <p className="text-gray-600 dark:text-gray-300 jetbrains-mono font-medium mb-1">
                     {exp.company}
                   </p>
-                  <p className="text-gray-500 text-sm jetbrains-mono mb-4">
+                  <p className="text-gray-400 dark:text-gray-500 text-sm jetbrains-mono mb-4">
                     {exp.tech}
                   </p>
 
@@ -205,7 +205,7 @@ export default function Exper() {
                       {exp.bullets.map((b, bi) => (
                         <li
                           key={bi}
-                          className="flex items-start gap-2 text-gray-400 text-sm font-mono"
+                          className="flex items-start gap-2 text-gray-500 dark:text-gray-400 text-sm font-mono"
                         >
                           <span className="text-blue-500 mt-1 flex-shrink-0">▸</span>
                           {b}

@@ -209,7 +209,7 @@ export default function Projects() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <span className="text-[#60A5FA]">PROJECTS.</span>
-            <span className="text-white ml-1">JSX</span>
+            <span className="text-gray-900 dark:text-white ml-1">JSX</span>
           </motion.h2>
         </div>
 
@@ -229,23 +229,23 @@ export default function Projects() {
                 variants={itemVariants}
                 onMouseEnter={() => handleEnter(proj)}
                 onMouseLeave={handleLeave}
-                className="group relative flex flex-col justify-between bg-transparent border-b border-white/5 hover:border-blue-500/20 transition-all duration-300 rounded-xl p-6 cursor-pointer hover:bg-white/2"
+                className="group relative flex flex-col justify-between bg-transparent border-b border-black/5 dark:border-white/5 hover:border-blue-500/20 transition-all duration-300 rounded-xl p-6 cursor-pointer hover:bg-black/3 dark:hover:bg-white/2"
               >
                 <div className="relative z-20">
                   {/* Top row: number + title + external link */}
                   <div className="flex items-center gap-4 flex-wrap">
-                    <span className="text-white/40 text-2xl font-fjalla-one tracking-wider font-mono">
+                    <span className="text-gray-400 dark:text-white/40 text-2xl font-fjalla-one tracking-wider font-mono">
                       {`<${proj.number}/>`}
                     </span>
                     <a
                       href={proj.link}
                       target={proj.link === "#" ? undefined : "_blank"}
                       rel="noopener noreferrer"
-                      className="text-white text-2xl md:text-3xl font-fjalla-one tracking-wider flex items-center gap-2 hover:text-[#60A5FA] transition-colors"
+                      className="text-gray-900 dark:text-white text-2xl md:text-3xl font-fjalla-one tracking-wider flex items-center gap-2 hover:text-[#60A5FA] transition-colors"
                       aria-label={`View ${proj.title}${proj.link === "#" ? " (in development)" : " live"}`}
                     >
                       {proj.title}
-                      <FiExternalLink className="w-5 h-5 text-white/40 group-hover:text-[#60A5FA] transition-colors" />
+                      <FiExternalLink className="w-5 h-5 text-gray-400 dark:text-white/40 group-hover:text-[#60A5FA] transition-colors" />
                     </a>
                     {/* Category badge */}
                     <span
@@ -256,18 +256,18 @@ export default function Projects() {
                   </div>
 
                   {/* Tech stack */}
-                  <p className="jetbrains-mono text-gray-400 text-sm md:text-base mt-2 font-medium">
+                  <p className="jetbrains-mono text-gray-500 dark:text-gray-400 text-sm md:text-base mt-2 font-medium">
                     <span className="text-[#60A5FA] font-mono">Stack:</span>{" "}
                     {proj.tech}
                   </p>
 
                   {/* Description */}
-                  <p className="jetbrains-mono text-gray-300 text-xs md:text-sm mt-2 max-w-xl leading-relaxed">
+                  <p className="jetbrains-mono text-gray-600 dark:text-gray-300 text-xs md:text-sm mt-2 max-w-xl leading-relaxed">
                     {proj.description}
                   </p>
 
                   {/* Mobile project image preview — next/image */}
-                  <div className="mt-4 block md:hidden w-full h-48 sm:h-64 relative rounded-xl overflow-hidden border border-white/10">
+                  <div className="mt-4 block md:hidden w-full h-48 sm:h-64 relative rounded-xl overflow-hidden border border-black/10 dark:border-white/10">
                     <Image
                       src={proj.image}
                       alt={`${proj.title} project preview`}
@@ -278,8 +278,8 @@ export default function Projects() {
                   </div>
 
                   {/* Key Features */}
-                  <div className="mt-3 flex flex-col gap-1 max-w-xl text-[11px] md:text-xs text-gray-500 font-mono">
-                    <span className="text-gray-400 font-semibold uppercase tracking-wider">
+                  <div className="mt-3 flex flex-col gap-1 max-w-xl text-[11px] md:text-xs text-gray-400 dark:text-gray-500 font-mono">
+                    <span className="text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider">
                       Key Features:
                     </span>
                     <ul className="list-none space-y-0.5 pl-1">
@@ -308,7 +308,7 @@ export default function Projects() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`${proj.title} GitHub repository`}
-                        className="flex items-center gap-1.5 text-gray-600 hover:text-white transition-colors text-xs font-mono"
+                        className="flex items-center gap-1.5 text-gray-400 dark:text-gray-600 hover:text-gray-900 dark:hover:text-white transition-colors text-xs font-mono"
                       >
                         <FaGithub className="w-4 h-4" />
                         Source Code

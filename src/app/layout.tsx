@@ -11,6 +11,7 @@ import {
   JetBrains_Mono,
 } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ThemeProvider } from "next-themes";
 
 import "../../src/app/globals.css";
 
@@ -284,7 +285,7 @@ type RootLayoutProps = Readonly<{
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -297,11 +298,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${firaCode.variable} ${firaSansCondensed.variable} ${margarine.variable} ${notoSansJP.variable} ${fjallaOne.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        <ClientWrapper>
-          <CustomCursor />
-          <DisableRightClick />
-          {children}
-        </ClientWrapper>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <ClientWrapper>
+            <CustomCursor />
+            <DisableRightClick />
+            {children}
+          </ClientWrapper>
+        </ThemeProvider>
 
         <SpeedInsights />
       </body>

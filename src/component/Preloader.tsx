@@ -11,7 +11,7 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#1e1e1e]">
+    <div className="relative min-h-screen overflow-hidden bg-slate-50 dark:bg-[#1e1e1e]">
       <AnimatePresence>
         {loading && (
           <motion.div
@@ -22,7 +22,7 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
               duration: 1.1,
               ease: [0.83, 0, 0.17, 1], 
             }}
-            className="fixed inset-0 z-50 bg-[#1e1e1e] flex flex-col items-center justify-center overflow-hidden"
+            className="fixed inset-0 z-50 bg-slate-50 dark:bg-[#1e1e1e] flex flex-col items-center justify-center overflow-hidden"
           >
             {/* Accent line that moves with the slide */}
             <motion.div
@@ -41,11 +41,11 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
               initial={{ y: 80, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.9, ease: [0.33, 1, 0.68, 1] }}
-              className="text-[3rem] md:text-[5rem] lg:text-[6rem] font-bold text-[#d4d4d4] tracking-[0.05em] leading-none 
+              className="text-[3rem] md:text-[5rem] lg:text-[6rem] font-bold text-slate-600 dark:text-[#d4d4d4] tracking-[0.05em] leading-none 
                         flex flex-col md:flex-row items-center justify-center md:space-x-4 space-y-2 md:space-y-0"
             >
-              <span className="text-[#9CDCFE] font-margarine">Hi/</span>
-              <span className="text-[#C586C0] font-noto-jp">こんにちは</span>
+              <span className="text-[#9CDCFE] dark:text-[#9CDCFE] text-blue-600 font-margarine">Hi/</span>
+              <span className="text-[#C586C0] dark:text-[#C586C0] text-purple-500 font-noto-jp">こんにちは</span>
             </motion.h1>
 
             {/* Loading dots (soft glow) */}

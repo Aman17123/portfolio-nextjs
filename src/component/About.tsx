@@ -6,7 +6,7 @@ import "../app/globals.css";
 
 const stats = [
   { value: "7+", label: "Projects Deployed" },
-  { value: "2+", label: "Internships" },
+  { value: "1+", label: "Internships" },
   { value: "2+", label: "Certifications" },
   { value: "3+", label: "Years Coding" },
 ];
@@ -92,7 +92,7 @@ export default function About() {
         >
           <span className="text-[#60A5FA]">ABOUT</span>
           <br />
-          <span className="text-[#E5E5E5] ml-4 sm:ml-14">ME.</span>
+          <span className="text-gray-800 dark:text-[#E5E5E5] ml-4 sm:ml-14">ME.</span>
         </motion.h2>
 
         <div className="flex flex-col lg:flex-row gap-16">
@@ -104,9 +104,9 @@ export default function About() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex-1 space-y-6"
           >
-            <p className="text-gray-300 font-fira-code text-lg leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-300 font-fira-code text-lg leading-relaxed">
               Hey! I&apos;m{" "}
-              <span className="text-white font-semibold">Aman Nakoti</span> — a
+              <span className="text-gray-900 dark:text-white font-semibold">Aman Nakoti</span> — a
               passionate Frontend Developer and MERN Stack enthusiast pursuing
               B.Tech in Computer Science at{" "}
               <span className="text-blue-400 font-semibold">
@@ -118,7 +118,7 @@ export default function About() {
               products.
             </p>
 
-            <p className="text-gray-400 font-fira-code text-base leading-relaxed">
+            <p className="text-gray-500 dark:text-gray-400 font-fira-code text-base leading-relaxed">
               With <span className="text-blue-400">3+ years of coding</span>{" "}
               experience, I&apos;m currently interning as a{" "}
               <span className="text-blue-400">React / MERN Stack Intern</span> at{" "}
@@ -136,7 +136,7 @@ export default function About() {
               great UX, and writing software that scales.
             </p>
 
-            <p className="text-gray-400 font-fira-code text-base leading-relaxed">
+            <p className="text-gray-500 dark:text-gray-400 font-fira-code text-base leading-relaxed">
               I&apos;m also a state-level football player — the discipline and
               teamwork from the field carry right into how I approach development.
               When I&apos;m not coding, you&apos;ll find me solving LeetCode
@@ -155,10 +155,10 @@ export default function About() {
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.2 }}
                   whileHover={{ scale: 1.02, borderColor: "rgba(96,165,250,0.3)" }}
-                  className="flex items-start gap-3 bg-white/3 border border-white/8 rounded-xl p-4 hover:border-blue-500/30 transition-colors"
+                  className="flex items-start gap-3 bg-black/5 dark:bg-white/3 border border-black/8 dark:border-white/8 rounded-xl p-4 hover:border-blue-500/30 transition-colors"
                 >
                   <span className="text-2xl">{emoji}</span>
-                  <span className="text-gray-400 font-mono text-sm">{text}</span>
+                  <span className="text-gray-500 dark:text-gray-400 font-mono text-sm">{text}</span>
                 </motion.div>
               ))}
             </div>
@@ -190,12 +190,12 @@ export default function About() {
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.3 }}
                   whileHover={{ scale: 1.05, borderColor: "rgba(96,165,250,0.5)" }}
-                  className="flex flex-col items-center justify-center text-center bg-white/3 border border-white/10 rounded-2xl p-6 cursor-default"
+                  className="flex flex-col items-center justify-center text-center bg-black/5 dark:bg-white/3 border border-black/10 dark:border-white/10 rounded-2xl p-6 cursor-default"
                 >
                   <span className="text-4xl md:text-5xl font-fjalla-one text-[#60A5FA] mb-1">
                     {value}
                   </span>
-                  <span className="text-gray-400 font-mono text-xs uppercase tracking-widest">
+                  <span className="text-gray-500 dark:text-gray-400 font-mono text-xs uppercase tracking-widest">
                     {label}
                   </span>
                 </motion.div>
@@ -213,11 +213,11 @@ export default function About() {
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.2 }}
                   whileHover={{ scale: 1.02, borderColor: "rgba(96,165,250,0.4)" }}
-                  className="flex items-center gap-4 bg-white/3 border border-white/10 rounded-xl px-5 py-3 cursor-default"
+                  className="flex items-center gap-4 bg-black/5 dark:bg-white/3 border border-black/10 dark:border-white/10 rounded-xl px-5 py-3 cursor-default"
                 >
                   <span className="text-2xl flex-shrink-0">{icon}</span>
                   <div className="flex flex-col">
-                    <span className="text-gray-500 font-mono text-[10px] uppercase tracking-widest">
+                    <span className="text-gray-400 dark:text-gray-500 font-mono text-[10px] uppercase tracking-widest">
                       {label}
                     </span>
                     {link ? (
@@ -230,7 +230,7 @@ export default function About() {
                         {value}
                       </a>
                     ) : (
-                      <span className="text-gray-200 font-fira-code text-sm font-medium">
+                      <span className="text-gray-700 dark:text-gray-200 font-fira-code text-sm font-medium">
                         {value}
                       </span>
                     )}
@@ -249,7 +249,7 @@ export default function About() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="mt-20"
         >
-          <h3 className="text-2xl font-fjalla-one text-gray-400 uppercase tracking-widest mb-8">
+          <h3 className="text-2xl font-fjalla-one text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-8">
             &lt;what_i_do /&gt;
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -262,13 +262,13 @@ export default function About() {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
                 whileHover={{ y: -4, borderColor: "rgba(96,165,250,0.4)" }}
-                className="group bg-white/3 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:bg-white/5 hover:shadow-[0_0_30px_rgba(59,130,246,0.08)]"
+                className="group bg-black/5 dark:bg-white/3 border border-black/10 dark:border-white/10 rounded-2xl p-6 transition-all duration-300 hover:bg-white/5 hover:shadow-[0_0_30px_rgba(59,130,246,0.08)]"
               >
                 <span className="text-3xl mb-4 block">{icon}</span>
-                <h4 className="text-white font-fjalla-one text-lg uppercase tracking-wide mb-2 group-hover:text-blue-400 transition-colors">
+                <h4 className="text-gray-900 dark:text-white font-fjalla-one text-lg uppercase tracking-wide mb-2 group-hover:text-blue-400 transition-colors">
                   {title}
                 </h4>
-                <p className="text-gray-500 font-mono text-sm leading-relaxed">
+                <p className="text-gray-400 dark:text-gray-500 font-mono text-sm leading-relaxed">
                   {desc}
                 </p>
               </motion.div>

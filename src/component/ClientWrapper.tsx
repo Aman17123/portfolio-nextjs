@@ -108,7 +108,7 @@ export default function ClientWrapper({
     <SmoothScrollProvider>
       <Preloader>
         <ScrollProgress />
-        <canvas ref={canvasRef} className="fixed inset-0 -z-10" aria-hidden="true" />
+        <canvas ref={canvasRef} className="fixed inset-0 -z-10 dark:opacity-100 opacity-0" aria-hidden="true" />
         <div className="relative z-10 overflow-x-hidden">{children}</div>
       </Preloader>
     </SmoothScrollProvider>

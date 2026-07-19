@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
+/* ─── Theme Variables ────────────────────────────────────────────────────── */
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+}
+
+.dark {
+  --background: #2c2c2c;
+  --foreground: #ffffff;
+}
+
 /* ─── Base ───────────────────────────────────────────────────────────────── */
 *,
 *::before,
@@ -27,6 +40,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   font-family: var(--font-fira-condensed), var(--font-geist-sans), sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 body::-webkit-scrollbar {

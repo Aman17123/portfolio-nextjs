@@ -48,7 +48,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="relative w-full md:ml-14 px-6 md:px-12 lg:px-20 pt-20 pb-10 overflow-hidden border-t border-white/5"
+      className="relative w-full md:ml-14 px-6 md:px-12 lg:px-20 pt-20 pb-10 overflow-hidden border-t border-black/5 dark:border-white/5"
     >
       {/* Background glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-40 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
@@ -61,17 +61,17 @@ export default function Footer() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-fjalla-one font-black uppercase text-white mb-4">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-fjalla-one font-black uppercase text-gray-900 dark:text-white mb-4">
             LET&apos;S <span className="text-[#60A5FA]">WORK</span>
             <br />
             TOGETHER.
           </h2>
           {/* Fixed: was rendering **markdown** literally */}
-          <p className="text-gray-400 font-mono text-base max-w-2xl mx-auto leading-relaxed">
+          <p className="text-gray-500 dark:text-gray-400 font-mono text-base max-w-2xl mx-auto leading-relaxed">
             I am actively looking for{" "}
-            <strong className="text-gray-200">Frontend Developer roles</strong>,{" "}
-            <strong className="text-gray-200">MERN Stack Developer opportunities</strong>, and{" "}
-            <strong className="text-gray-200">full-time web development positions</strong>.
+            <strong className="text-gray-700 dark:text-gray-200">Frontend Developer roles</strong>,{" "}
+            <strong className="text-gray-700 dark:text-gray-200">MERN Stack Developer opportunities</strong>, and{" "}
+            <strong className="text-gray-700 dark:text-gray-200">full-time web development positions</strong>.
             Whether you are a recruiter, a business seeking a freelance solution, or a
             fellow developer wanting to collaborate, feel free to reach out. Let&apos;s
             build something high-performance together!
@@ -91,7 +91,7 @@ export default function Footer() {
             href="mailto:www.amannakoti103@gmail.com"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-3 text-white font-bold text-lg px-10 py-4 rounded-full
+            className="inline-flex items-center gap-3 text-gray-900 dark:text-white font-bold text-lg px-10 py-4 rounded-full
               border border-[#3b82f6] hover:border-[#60a5fa]
               transition-all duration-300 hover:shadow-[0_0_40px_rgba(59,130,246,0.4)]
               font-fjalla-one uppercase tracking-wide"
@@ -139,7 +139,7 @@ export default function Footer() {
                 filter: `drop-shadow(0 0 8px ${color})`,
               }}
               whileTap={{ scale: 0.9 }}
-              className="text-gray-500 hover:text-white transition-colors"
+              className="text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
             >
               <Icon className="w-7 h-7" />
             </motion.a>
@@ -147,7 +147,7 @@ export default function Footer() {
         </motion.div>
 
         {/* Footer SEO Paragraph */}
-        <p className="text-[11px] md:text-xs text-gray-500 max-w-2xl mx-auto leading-relaxed mt-2 font-mono">
+        <p className="text-[11px] md:text-xs text-gray-400 dark:text-gray-500 max-w-2xl mx-auto leading-relaxed mt-2 font-mono">
           Aman Nakoti — B.Tech Computer Science student at Uttaranchal University,
           Dehradun (8.3 CGPA). Currently a React Intern at Devbhoomi Infotech, Rishikesh.
           Specializing as a Frontend Developer and MERN Stack Developer building responsive,
@@ -156,16 +156,16 @@ export default function Footer() {
         </p>
 
         {/* Divider */}
-        <div className="w-full max-w-md h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        <div className="w-full max-w-md h-px bg-gradient-to-r from-transparent via-black/10 dark:via-white/10 to-transparent" />
 
         {/* Bottom row */}
-        <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-600 text-sm font-mono text-center sm:text-left">
+        <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-400 dark:text-gray-600 text-sm font-mono text-center sm:text-left">
           <span>
             Designed &amp; Built by{" "}
-            <span className="text-gray-400">Aman Nakoti</span> &copy;{" "}
+            <span className="text-gray-600 dark:text-gray-400">Aman Nakoti</span> &copy;{" "}
             {new Date().getFullYear()}
           </span>
-          <span className="text-gray-600">
+          <span className="text-gray-400 dark:text-gray-600">
             Made with <span className="text-blue-500">Next.js</span> &amp;{" "}
             <span className="text-pink-500">Framer Motion</span>
           </span>
@@ -176,7 +176,7 @@ export default function Footer() {
             whileHover={{ scale: 1.1, y: -2 }}
             whileTap={{ scale: 0.9 }}
             aria-label="Back to top"
-            className="flex items-center gap-2 text-gray-500 hover:text-blue-400 transition-colors cursor-pointer"
+            className="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
           >
             <FiArrowUp className="w-4 h-4" />
             Back to top

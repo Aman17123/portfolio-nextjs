@@ -130,7 +130,7 @@ export default function Stack() {
           >
             <span className="text-[#60A5FA]">TECH</span>
             <br />
-            <span className="text-white ml-4">STACK</span>
+            <span className="text-gray-900 dark:text-white ml-4">STACK</span>
           </motion.h2>
         </div>
 
@@ -146,7 +146,7 @@ export default function Stack() {
               className="flex flex-col gap-6"
             >
               {/* Section Title */}
-              <h3 className="text-[#9ca3af] font-fjalla-one text-3xl md:text-4xl uppercase text-left tracking-wide mb-4">
+              <h3 className="text-gray-500 dark:text-[#9ca3af] font-fjalla-one text-3xl md:text-4xl uppercase text-left tracking-wide mb-4">
                 &lt;{section.title}/&gt;
               </h3>
 
@@ -167,7 +167,7 @@ export default function Stack() {
                     className={`skill-item group relative flex items-center gap-3 rounded-xl px-4 py-3 transition-all duration-300 ${
                       highlight
                         ? "bg-green-500/10 border border-green-500/50 hover:border-green-400 hover:shadow-[0_0_20px_rgba(34,197,94,0.25)]"
-                        : "bg-white/3 border border-white/8 hover:border-blue-500/30"
+                        : "bg-black/5 dark:bg-white/3 border border-black/8 dark:border-white/8 hover:border-blue-500/30"
                     }`}
                   >
                     {highlight && (
@@ -176,7 +176,7 @@ export default function Stack() {
                       </span>
                     )}
                     <Icon className={`w-8 h-8 flex-shrink-0 ${color}`} />
-                    <span className="text-white font-fjalla-one text-lg font-normal">
+                    <span className="text-gray-900 dark:text-white font-fjalla-one text-lg font-normal">
                       {label}
                     </span>
                   </motion.div>

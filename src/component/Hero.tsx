@@ -84,7 +84,7 @@ export default function HeroSection() {
   // Staggered title words
   const titleWords = [
     { text: "FULLSTACK", className: "text-[#60A5FA]" },
-    { text: "DEVELOPER", className: "text-[#E5E5E5] ml-4 sm:ml-14" },
+    { text: "DEVELOPER", className: "text-gray-800 dark:text-[#E5E5E5] ml-4 sm:ml-14" },
   ];
 
   return (
@@ -153,9 +153,9 @@ export default function HeroSection() {
                 <span className="text-[#60A5FA] font-mono">
                   &lt;student&gt;
                 </span>{" "}
-                <span className="text-gray-300">
+                <span className="text-gray-600 dark:text-gray-300">
                   I&apos;m{" "}
-                  <span className="text-white font-semibold">Aman Nakoti</span>,
+                  <span className="text-gray-900 dark:text-white font-semibold">Aman Nakoti</span>,
                   a B.Tech CS student who loves exploring the latest web
                   technologies to craft unique digital experiences.
                 </span>{" "}
@@ -165,7 +165,7 @@ export default function HeroSection() {
               </>,
               <>
                 <span className="text-[#60A5FA] font-mono">&lt;focus&gt;</span>{" "}
-                <span className="text-gray-300">
+                <span className="text-gray-600 dark:text-gray-300">
                   My focus is on clean code, performance, great UI/UX — and
                   building end-to-end apps with the MERN stack.
                 </span>{" "}
@@ -175,15 +175,15 @@ export default function HeroSection() {
                 <span className="text-[#60A5FA] font-mono">
                   &lt;projects&gt;
                 </span>{" "}
-                <span className="text-gray-300">
+                <span className="text-gray-600 dark:text-gray-300">
                   Currently building projects with{" "}
                 </span>
                 <span className="text-[#FBBF24] font-semibold">Next.js</span>
-                <span className="text-gray-300">, </span>
+                <span className="text-gray-600 dark:text-gray-300">, </span>
                 <span className="text-[#FBBF24] font-semibold">Node.js</span>
-                <span className="text-gray-300">, and </span>
+                <span className="text-gray-600 dark:text-gray-300">, and </span>
                 <span className="text-[#FBBF24] font-semibold">3D web</span>
-                <span className="text-gray-300">
+                <span className="text-gray-600 dark:text-gray-300">
                   {" "}
                   experiences to stay ahead in the ever-evolving tech world.
                 </span>{" "}
@@ -217,12 +217,12 @@ export default function HeroSection() {
             {["🎓 B.Tech CS Student", "⚙️ MERN Stack Dev", "💼 React Intern"].map((tag) => (
               <span
                 key={tag}
-                className="flex items-center gap-2 text-sm text-gray-400 font-mono bg-white/5 border border-white/10 px-3 py-1.5 rounded-full"
+                className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-mono bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 px-3 py-1.5 rounded-full"
               >
                 {tag}
               </span>
             ))}
-            <span className="flex items-center gap-2 text-sm text-gray-400 font-mono bg-white/5 border border-white/10 px-3 py-1.5 rounded-full">
+            <span className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-mono bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 px-3 py-1.5 rounded-full">
               <FaMapMarkerAlt className="text-blue-400" /> India
             </span>
           </motion.div>
@@ -244,7 +244,7 @@ export default function HeroSection() {
               onMouseLeave={magnetic.onMouseLeave}
               style={{ x: magnetic.x, y: magnetic.y }}
               whileTap={{ scale: 0.95 }}
-              className="text-white font-bold text-lg px-8 py-3 rounded-full
+              className="text-gray-900 dark:text-white font-bold text-lg px-8 py-3 rounded-full
                 border border-[#3b82f6] hover:border-[#60a5fa]
                 transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]
                 font-fjalla-one uppercase cursor-pointer tracking-wide"
@@ -263,7 +263,7 @@ export default function HeroSection() {
                   aria-label={`Visit Aman Nakoti's ${label} profile`}
                   whileHover={{ scale: 1.2, color }}
                   whileTap={{ scale: 0.9 }}
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-500 dark:text-gray-400 hover:text-white transition-colors"
                 >
                   <Icon className="w-6 h-6" />
                 </motion.a>
@@ -310,7 +310,7 @@ export default function HeroSection() {
             <motion.div
               animate={{ y: [-4, 4, -4] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-3 -right-3 bg-[#0f172a] border border-blue-500/40 rounded-xl px-3 py-1.5 text-xs font-mono text-blue-400 shadow-lg shadow-blue-500/10"
+              className="absolute -bottom-3 -right-3 bg-slate-100 dark:bg-[#0f172a] border border-blue-500/40 rounded-xl px-3 py-1.5 text-xs font-mono text-blue-400 shadow-lg shadow-blue-500/10"
             >
               💻 Frontend Dev
             </motion.div>
@@ -322,7 +322,7 @@ export default function HeroSection() {
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="absolute -top-3 -left-3 bg-[#0f172a] border border-green-500/40 rounded-xl px-3 py-1.5 text-xs font-mono text-green-400 shadow-lg shadow-green-500/10"
+              className="absolute -top-3 -left-3 bg-slate-100 dark:bg-[#0f172a] border border-green-500/40 rounded-xl px-3 py-1.5 text-xs font-mono text-green-400 shadow-lg shadow-green-500/10"
             >
               ⚙️ MERN Stack
             </motion.div>
@@ -336,7 +336,7 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.8, duration: 0.6 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-gray-600 hover:text-blue-400 transition-colors cursor-pointer"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-gray-400 dark:text-gray-600 hover:text-blue-400 transition-colors cursor-pointer"
         aria-label="Scroll down to About Me section"
       >
         <span className="text-xs font-mono tracking-widest uppercase">
