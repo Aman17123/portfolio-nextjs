@@ -1,9 +1,18 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Geist, Geist_Mono } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Fira_Code,
+  Fira_Sans_Condensed,
+  Margarine,
+  Noto_Sans_JP,
+  Fjalla_One,
+  JetBrains_Mono,
+} from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-import "./globals.css";
+import "../../src/app/globals.css";
 
 import ClientWrapper from "../component/ClientWrapper";
 import CustomCursor from "../component/CustomCursor";
@@ -17,6 +26,44 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const firaCode = Fira_Code({
+  variable: "--font-fira-code",
+  subsets: ["latin"],
+  weight: "variable",
+});
+
+const firaSansCondensed = Fira_Sans_Condensed({
+  variable: "--font-fira-condensed",
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+});
+
+const margarine = Margarine({
+  variable: "--font-margarine",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const notoSansJP = Noto_Sans_JP({
+  variable: "--font-noto-jp",
+  subsets: ["latin"],
+  weight: "variable",
+});
+
+const fjallaOne = Fjalla_One({
+  variable: "--font-fjalla-one",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+  weight: "variable",
+  style: ["normal", "italic"],
 });
 
 const SITE_URL = "https://amannakoti.vercel.app";
@@ -51,6 +98,11 @@ export const metadata: Metadata = {
     "B.Tech CSE Student Portfolio",
     "Rishikesh Developer",
     "Dehradun Developer",
+    "React Intern",
+    "MERN Stack Intern",
+    "Web Developer in Rishikesh",
+    "Web Developer in Dehradun",
+    "Devbhoomi Infotech",
   ],
 
   authors: [
@@ -69,22 +121,25 @@ export const metadata: Metadata = {
 
   alternates: {
     canonical: SITE_URL,
+    languages: {
+      "en-IN": SITE_URL,
+    },
   },
 
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: SITE_URL,
-    title: "Aman Nakoti | MERN Stack & Frontend Developer",
+    title: "Aman Nakoti | MERN Stack & Frontend Developer — React Intern at Devbhoomi Infotech",
     description:
-      "Explore the portfolio of Aman Nakoti, a MERN Stack and Frontend Developer building responsive web applications using React, Next.js, Node.js, Express.js, and MongoDB.",
+      "Explore the portfolio of Aman Nakoti, a MERN Stack and Frontend Developer and React Intern from Rishikesh, India, building responsive web applications with React, Next.js, Node.js, Express.js, and MongoDB.",
     siteName: "Aman Nakoti Portfolio",
     images: [
       {
         url: "/avatar.png",
         width: 1200,
         height: 630,
-        alt: "Aman Nakoti - MERN Stack and Frontend Developer",
+        alt: "Aman Nakoti — MERN Stack and Frontend Developer Portfolio",
       },
     ],
   },
@@ -93,7 +148,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Aman Nakoti | MERN Stack & Frontend Developer",
     description:
-      "Portfolio of Aman Nakoti, a MERN Stack and Frontend Developer working with React, Next.js, Node.js, Express.js, and MongoDB.",
+      "Portfolio of Aman Nakoti, a MERN Stack Developer and React Intern from Rishikesh, India, working with React, Next.js, Node.js, Express.js, and MongoDB.",
     images: ["/avatar.png"],
   },
 
@@ -121,6 +176,12 @@ const personJsonLd = {
   description:
     "B.Tech Computer Science student and MERN Stack Developer specializing in React, Next.js, Node.js, Express.js, MongoDB, Tailwind CSS, and modern web development.",
   email: "mailto:www.amannakoti103@gmail.com",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Rishikesh",
+    addressRegion: "Uttarakhand",
+    addressCountry: "IN",
+  },
   sameAs: [
     "https://github.com/Aman17123",
     "https://www.linkedin.com/in/aman-nakoti/",
@@ -148,6 +209,25 @@ const personJsonLd = {
     "UI/UX Design",
     "Figma",
   ],
+  occupation: {
+    "@type": "Occupation",
+    name: "React / MERN Stack Intern",
+    occupationalCategory: "Web Developer",
+    employer: {
+      "@type": "Organization",
+      name: "Devbhoomi Infotech",
+      url: "https://www.devbhoomiinfotech.com/",
+    },
+    jobLocation: {
+      "@type": "Place",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Rishikesh",
+        addressRegion: "Uttarakhand",
+        addressCountry: "IN",
+      },
+    },
+  },
 };
 
 const websiteJsonLd = {
@@ -172,6 +252,32 @@ const websiteJsonLd = {
   },
 };
 
+const profilePageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  mainEntity: {
+    "@type": "Person",
+    name: "Aman Nakoti",
+    alternateName: "amannakoti",
+    url: SITE_URL,
+    image: `${SITE_URL}/avatar.png`,
+    jobTitle: "React / MERN Stack Intern",
+    description:
+      "Aman Nakoti is a MERN Stack Developer and Frontend Developer from Rishikesh, India, specializing in React, Next.js, Node.js, Express.js, and MongoDB.",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Rishikesh",
+      addressRegion: "Uttarakhand",
+      addressCountry: "IN",
+    },
+    sameAs: [
+      "https://github.com/Aman17123",
+      "https://www.linkedin.com/in/aman-nakoti/",
+      "https://leetcode.com/u/amangate9897/",
+    ],
+  },
+};
+
 type RootLayoutProps = Readonly<{
   children: ReactNode;
 }>;
@@ -183,13 +289,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([personJsonLd, websiteJsonLd]),
+            __html: JSON.stringify([personJsonLd, websiteJsonLd, profilePageJsonLd]),
           }}
         />
       </head>
 
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${firaCode.variable} ${firaSansCondensed.variable} ${margarine.variable} ${notoSansJP.variable} ${fjallaOne.variable} ${jetbrainsMono.variable} antialiased`}
       >
         <ClientWrapper>
           <CustomCursor />

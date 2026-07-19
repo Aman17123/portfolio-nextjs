@@ -69,9 +69,9 @@ export default function Footer() {
           {/* Fixed: was rendering **markdown** literally */}
           <p className="text-gray-400 font-mono text-base max-w-2xl mx-auto leading-relaxed">
             I am actively looking for{" "}
-            <strong className="text-gray-200">Internships</strong>,{" "}
-            <strong className="text-gray-200">Frontend Developer roles</strong>, and{" "}
-            <strong className="text-gray-200">MERN Stack Developer opportunities</strong>.
+            <strong className="text-gray-200">Frontend Developer roles</strong>,{" "}
+            <strong className="text-gray-200">MERN Stack Developer opportunities</strong>, and{" "}
+            <strong className="text-gray-200">full-time web development positions</strong>.
             Whether you are a recruiter, a business seeking a freelance solution, or a
             fellow developer wanting to collaborate, feel free to reach out. Let&apos;s
             build something high-performance together!
@@ -149,9 +149,10 @@ export default function Footer() {
         {/* Footer SEO Paragraph */}
         <p className="text-[11px] md:text-xs text-gray-500 max-w-2xl mx-auto leading-relaxed mt-2 font-mono">
           Aman Nakoti — B.Tech Computer Science student at Uttaranchal University,
-          Dehradun (8.3 CGPA). Specializing as a Frontend Developer in India and MERN
-          Stack Developer building responsive, animated, and high-performance Web
-          Developer Portfolios and custom e-commerce web applications.
+          Dehradun (8.3 CGPA). Currently a React Intern at Devbhoomi Infotech, Rishikesh.
+          Specializing as a Frontend Developer and MERN Stack Developer building responsive,
+          animated, and high-performance web applications using React, Next.js, Node.js,
+          Express.js, MongoDB, and Tailwind CSS.
         </p>
 
         {/* Divider */}

@@ -5,8 +5,8 @@ import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import "../app/globals.css";
 
 const stats = [
-  { value: "5+", label: "Projects Deployed" },
-  { value: "1", label: "Internship" },
+  { value: "7+", label: "Projects Deployed" },
+  { value: "2+", label: "Internships" },
   { value: "2+", label: "Certifications" },
   { value: "3+", label: "Years Coding" },
 ];
@@ -25,8 +25,8 @@ const personalHighlights = [
   { icon: "🏠", label: "Hometown", value: "Rishikesh, Uttarakhand" },
   {
     icon: "💼",
-    label: "Internship",
-    value: "MERN Stack Intern @ DevBhoomi Infotech",
+    label: "Current Role",
+    value: "React Intern @ Devbhoomi Infotech",
     link: "https://www.devbhoomiinfotech.com/",
   },
   { icon: "💻", label: "Experience", value: "3+ Years of Coding" },
@@ -121,16 +121,17 @@ export default function About() {
             <p className="text-gray-400 font-fira-code text-base leading-relaxed">
               With <span className="text-blue-400">3+ years of coding</span>{" "}
               experience, I&apos;m currently interning as a{" "}
-              <span className="text-blue-400">MERN Stack Developer</span> at{" "}
+              <span className="text-blue-400">React / MERN Stack Intern</span> at{" "}
               <a
                 href="https://www.devbhoomiinfotech.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-400 underline underline-offset-2 hover:text-blue-300 transition-colors"
               >
-                DevBhoomi Infotech
+                Devbhoomi Infotech
               </a>
-              , building high-performance web applications using React, Next.js,
+              , where I build responsive frontend interfaces, integrate APIs, and
+              contribute to real-world client projects using React, Next.js,
               Node.js, Express.js, and MongoDB. I care deeply about clean code,
               great UX, and writing software that scales.
             </p>

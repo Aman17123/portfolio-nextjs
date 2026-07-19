@@ -83,7 +83,7 @@ export default function HeroSection() {
 
   // Staggered title words
   const titleWords = [
-    { text: "FRONTEND", className: "text-[#60A5FA]" },
+    { text: "FULLSTACK", className: "text-[#60A5FA]" },
     { text: "DEVELOPER", className: "text-[#E5E5E5] ml-4 sm:ml-14" },
   ];
 
@@ -91,7 +91,7 @@ export default function HeroSection() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative min-h-screen md:ml-14 px-6 md:px-12 lg:px-20 py-16 md:py-24 overflow-hidden"
+      className="relative font-fjalla-one min-h-screen md:ml-14 px-6 md:px-12 lg:px-20 py-16 md:py-20 overflow-hidden flex items-center"
     >
       {/* Decorative glow blobs */}
       <div className="absolute top-20 left-0 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
@@ -99,10 +99,10 @@ export default function HeroSection() {
 
       <motion.div
         style={{ y: textY }}
-        className="relative z-10 flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-12 max-w-7xl w-full mx-auto"
+        className="relative z-10 flex flex-col-reverse lg:flex-row items-center lg:items-center justify-between gap-10 lg:gap-16 max-w-7xl w-full mx-auto"
       >
         {/* ── LEFT: Text Content ── */}
-        <div className="flex flex-col max-w-xl">
+        <div className="flex flex-col max-w-xl lg:max-w-lg">
           {/* Availability Badge */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -150,14 +150,18 @@ export default function HeroSection() {
           <div className="space-y-6 text-lg md:text-xl font-fira-code leading-relaxed">
             {[
               <>
-                <span className="text-[#60A5FA] font-mono">&lt;student&gt;</span>{" "}
+                <span className="text-[#60A5FA] font-mono">
+                  &lt;student&gt;
+                </span>{" "}
                 <span className="text-gray-300">
                   I&apos;m{" "}
-                  <span className="text-white font-semibold">Aman Nakoti</span>, a
-                  B.Tech CS student who loves exploring the latest web technologies
-                  to craft unique digital experiences.
+                  <span className="text-white font-semibold">Aman Nakoti</span>,
+                  a B.Tech CS student who loves exploring the latest web
+                  technologies to craft unique digital experiences.
                 </span>{" "}
-                <span className="text-[#60A5FA] font-mono">&lt;/student&gt;</span>
+                <span className="text-[#60A5FA] font-mono">
+                  &lt;/student&gt;
+                </span>
               </>,
               <>
                 <span className="text-[#60A5FA] font-mono">&lt;focus&gt;</span>{" "}
@@ -168,24 +172,35 @@ export default function HeroSection() {
                 <span className="text-[#60A5FA] font-mono">&lt;/focus&gt;</span>
               </>,
               <>
-                <span className="text-[#60A5FA] font-mono">&lt;projects&gt;</span>{" "}
-                <span className="text-gray-300">Currently building projects with </span>
+                <span className="text-[#60A5FA] font-mono">
+                  &lt;projects&gt;
+                </span>{" "}
+                <span className="text-gray-300">
+                  Currently building projects with{" "}
+                </span>
                 <span className="text-[#FBBF24] font-semibold">Next.js</span>
                 <span className="text-gray-300">, </span>
                 <span className="text-[#FBBF24] font-semibold">Node.js</span>
                 <span className="text-gray-300">, and </span>
                 <span className="text-[#FBBF24] font-semibold">3D web</span>
                 <span className="text-gray-300">
-                  {" "}experiences to stay ahead in the ever-evolving tech world.
+                  {" "}
+                  experiences to stay ahead in the ever-evolving tech world.
                 </span>{" "}
-                <span className="text-[#60A5FA] font-mono">&lt;/projects&gt;</span>
+                <span className="text-[#60A5FA] font-mono">
+                  &lt;/projects&gt;
+                </span>
               </>,
             ].map((para, i) => (
               <motion.p
                 key={i}
                 initial={{ opacity: 0, y: 25 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 + i * 0.18, ease: "easeOut" }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.6 + i * 0.18,
+                  ease: "easeOut",
+                }}
               >
                 {para}
               </motion.p>
@@ -199,10 +214,7 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 1.1 }}
             className="mt-8 flex flex-wrap gap-3"
           >
-            {[
-              "🎓 B.Tech CS Student",
-              "⚙️ MERN Stack Dev",
-            ].map((tag) => (
+            {["🎓 B.Tech CS Student", "⚙️ MERN Stack Dev", "💼 React Intern"].map((tag) => (
               <span
                 key={tag}
                 className="flex items-center gap-2 text-sm text-gray-400 font-mono bg-white/5 border border-white/10 px-3 py-1.5 rounded-full"
@@ -284,12 +296,12 @@ export default function HeroSection() {
             {/* Static blue glow */}
             <div className="absolute inset-0 rounded-full bg-blue-500/20 blur-xl scale-110" />
             {/* Photo container */}
-            <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] rounded-full overflow-hidden border-2 border-blue-500/50">
+            <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[26rem] lg:h-[26rem] rounded-full overflow-hidden border-2 border-blue-500/50">
               <Image
                 src="/avatar.png"
                 alt="Aman Nakoti — Frontend Developer and MERN Stack Developer from Dehradun, India"
                 fill
-                sizes="(max-width: 640px) 256px, (max-width: 768px) 288px, (max-width: 1024px) 384px, 448px"
+                sizes="(max-width: 640px) 224px, (max-width: 768px) 256px, (max-width: 1024px) 320px, 416px"
                 className="object-cover object-top"
                 priority
               />
@@ -305,7 +317,11 @@ export default function HeroSection() {
             {/* Floating badge 2 */}
             <motion.div
               animate={{ y: [4, -4, 4] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+              transition={{
+                duration: 3.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
               className="absolute -top-3 -left-3 bg-[#0f172a] border border-green-500/40 rounded-xl px-3 py-1.5 text-xs font-mono text-green-400 shadow-lg shadow-green-500/10"
             >
               ⚙️ MERN Stack
@@ -323,7 +339,9 @@ export default function HeroSection() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-gray-600 hover:text-blue-400 transition-colors cursor-pointer"
         aria-label="Scroll down to About Me section"
       >
-        <span className="text-xs font-mono tracking-widest uppercase">scroll</span>
+        <span className="text-xs font-mono tracking-widest uppercase">
+          scroll
+        </span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}

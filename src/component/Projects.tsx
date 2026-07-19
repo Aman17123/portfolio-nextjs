@@ -144,6 +144,48 @@ export default function Projects() {
       github: "https://github.com/Aman17123",
       isExternal: false,
     },
+    {
+      number: "06",
+      title: "REAL-TIME CHAT APPLICATION",
+      category: "Fullstack · MERN",
+      categoryColor: "text-cyan-400 border-cyan-400/30 bg-cyan-400/5",
+      tech: "React.js · Node.js · Socket.io · MongoDB · Express.js",
+      description:
+        "A real-time messaging platform built on the MERN stack with Socket.io for bi-directional communication. Supports one-on-one and group chat with live typing indicators and message status.",
+      features: [
+        "WebSocket-powered real-time messaging with instant delivery and read receipts",
+        "User authentication with JWT and protected private chat rooms",
+        "Persistent message history stored in MongoDB with efficient pagination",
+        "Responsive UI built with React and Tailwind CSS for seamless cross-device use",
+      ],
+      impact:
+        "Demonstrated end-to-end MERN stack proficiency by building a production-grade real-time communication tool.",
+      image: "/portfolio.png",
+      link: "#",
+      github: "https://github.com/Aman17123",
+      isExternal: false,
+    },
+    {
+      number: "07",
+      title: "TASK MANAGEMENT DASHBOARD",
+      category: "Frontend · UI/UX",
+      categoryColor: "text-yellow-400 border-yellow-400/30 bg-yellow-400/5",
+      tech: "React.js · TypeScript · Tailwind CSS · Framer Motion · Supabase",
+      description:
+        "A drag-and-drop Kanban-style task management dashboard designed for small teams. Features board customization, priority tagging, due-date tracking, and a clean analytics overview.",
+      features: [
+        "Drag-and-drop task reordering with smooth Framer Motion transitions",
+        "Column-based board system with customizable workflow stages",
+        "Analytics panel showing task completion rates and workload distribution",
+        "Supabase integration for real-time data persistence and authentication",
+      ],
+      impact:
+        "Showcased strong UI/UX skills by designing a practical productivity tool with fluid interactions and accessible design patterns.",
+      image: "/portfolio.png",
+      link: "#",
+      github: "https://github.com/Aman17123",
+      isExternal: false,
+    },
   ];
 
   const [hoveredProject, setHoveredProject] = useState<Project | null>(null);

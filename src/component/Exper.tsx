@@ -42,6 +42,21 @@ export default function Exper() {
 
   const experiences: Experience[] = [
     {
+      title: "REACT / MERN STACK INTERN",
+      company: "Devbhoomi Infotech — Rishikesh, Uttarakhand",
+      tech: "React.js · Next.js · Node.js · Express.js · MongoDB · Tailwind CSS · Git",
+      period: "May 2026 – Present",
+      type: "work",
+      bullets: [
+        "Building responsive, high-performance frontend interfaces using React.js and Next.js for live client projects",
+        "Developing reusable component libraries and maintaining clean UI architecture across multiple pages",
+        "Integrating RESTful APIs with frontend applications and handling state management efficiently",
+        "Collaborating with senior developers on MERN stack features including backend API routes and MongoDB data models",
+        "Improving website performance through code splitting, lazy loading, and optimizing Core Web Vitals",
+        "Using Git and GitHub for version control in a team-based agile workflow with real-world project requirements",
+      ],
+    },
+    {
       title: "WEB-DEVELOPMENT INTERNSHIP",
       company: "Redsan × EDCINDIA × Redcubical Systems",
       tech: "Next.js · React.js · Tailwind CSS",
