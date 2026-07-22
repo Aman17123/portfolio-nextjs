@@ -9,7 +9,7 @@
 }
 
 .dark {
-  --background: #2c2c2c;
+  --background: #1e1e1e;
   --foreground: #ffffff;
 }
 
@@ -42,9 +42,7 @@ body {
   font-family: var(--font-fira-condensed), var(--font-geist-sans), sans-serif;
   background-color: var(--background);
   color: var(--foreground);
-  transition:
-    background-color 0.3s,
-    color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 body::-webkit-scrollbar {

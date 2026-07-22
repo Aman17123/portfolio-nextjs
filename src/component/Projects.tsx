@@ -146,44 +146,50 @@ export default function Projects() {
     },
     {
       number: "06",
-      title: "REAL-TIME CHAT APPLICATION",
-      category: "Fullstack · MERN",
-      categoryColor: "text-cyan-400 border-cyan-400/30 bg-cyan-400/5",
-      tech: "React.js · Node.js · Socket.io · MongoDB · Express.js",
+      title: "AI SOCIAL MEDIA AUTOMATION",
+      category: "MERN Stack · AI SaaS · Automation",
+      categoryColor: "text-violet-400 border-violet-400/30 bg-violet-400/5",
+      tech: "React 19 · TypeScript · Vite · Tailwind CSS v4 · Node.js · Express · MongoDB · Gemini AI · Cloudinary · Zernio OAuth",
       description:
-        "A real-time messaging platform built on the MERN stack with Socket.io for bi-directional communication. Supports one-on-one and group chat with live typing indicators and message status.",
+        "A full-stack MERN platform for generating, scheduling, and publishing AI-powered social media posts across Twitter, Instagram, Facebook, LinkedIn, and more — all from one dashboard.",
       features: [
-        "WebSocket-powered real-time messaging with instant delivery and read receipts",
-        "User authentication with JWT and protected private chat rooms",
-        "Persistent message history stored in MongoDB with efficient pagination",
-        "Responsive UI built with React and Tailwind CSS for seamless cross-device use",
+        "AI post generation using Google Gemini with tone-based content and smart hashtags",
+        "Optional AI image generation via Imagen 3.0 integrated into the content workflow",
+        "JWT authentication with bcrypt password hashing and secure protected routes",
+        "Social account connection using Zernio OAuth supporting 8+ platforms",
+        "Post scheduler with future date/time publishing and background cron job every minute",
+        "Cloudinary media storage with seamless upload and retrieval pipeline",
+        "Activity log system and real-time dashboard with toast notifications and animations",
       ],
       impact:
-        "Demonstrated end-to-end MERN stack proficiency by building a production-grade real-time communication tool.",
-      image: "/portfolio.png",
-      link: "#",
-      github: "https://github.com/Aman17123",
+        "Showcases full-stack AI SaaS architecture by combining Gemini, Imagen, Cloudinary, OAuth, and cron-based automation into a production-grade social media command center.",
+      image: "/automation.png",
+      link: "https://github.com/Aman17123/AI_SOCIAL_MEDIA_AUTOMATION_MERN",
+      github: "https://github.com/Aman17123/AI_SOCIAL_MEDIA_AUTOMATION_MERN",
       isExternal: false,
     },
     {
       number: "07",
-      title: "TASK MANAGEMENT DASHBOARD",
-      category: "Frontend · UI/UX",
-      categoryColor: "text-yellow-400 border-yellow-400/30 bg-yellow-400/5",
-      tech: "React.js · TypeScript · Tailwind CSS · Framer Motion · Supabase",
+      title: "SCHOOL WEBSITE MANAGEMENT",
+      category: "Full Stack MERN · Admin Dashboard",
+      categoryColor: "text-emerald-400 border-emerald-400/30 bg-emerald-400/5",
+      tech: "React · Vite · Tailwind CSS · Node.js · Express · MongoDB · Mongoose · JWT · Framer Motion",
       description:
-        "A drag-and-drop Kanban-style task management dashboard designed for small teams. Features board customization, priority tagging, due-date tracking, and a clean analytics overview.",
+        "A full-stack school website and admin management system with dynamic notices, events, toppers, gallery, leadership pages, and enquiry handling — built for CBSE/ICSE institutions.",
       features: [
-        "Drag-and-drop task reordering with smooth Framer Motion transitions",
-        "Column-based board system with customizable workflow stages",
-        "Analytics panel showing task completion rates and workload distribution",
-        "Supabase integration for real-time data persistence and authentication",
+        "Premium responsive public website with hero, notices, news, events, toppers, and gallery sections",
+        "Dynamic Notice Board and News & Events sections managed through admin panel",
+        "Leadership Desk page for Chairman, Director, Principal, and Headmaster messages",
+        "Teachers directory, Facilities showcase, and Contact/enquiry form for parents",
+        "JWT-based admin authentication dashboard for managing all school content dynamically",
+        "SEO-optimized metadata, favicon, and polished school branding throughout",
+        "Backend deployed on Render with MongoDB Atlas and frontend on Vercel",
       ],
       impact:
-        "Showcased strong UI/UX skills by designing a practical productivity tool with fluid interactions and accessible design patterns.",
-      image: "/portfolio.png",
-      link: "#",
-      github: "https://github.com/Aman17123",
+        "Delivers a complete digital presence for schools with both a polished public website and a private admin CMS, deployed end-to-end on cloud infrastructure.",
+      image: "/school.png",
+      link: "https://devbhoomischool.vercel.app/",
+      github: "https://github.com/Aman17123/Schoolwebsite",
       isExternal: false,
     },
   ];
@@ -321,11 +327,12 @@ export default function Projects() {
                     )}
                   </div>
                 </div>
+
               </motion.div>
             ))}
           </motion.div>
 
-          {/* Hovered Project Image — Desktop only, next/image */}
+          {/* Hovered Project Image — Desktop only */}
           <AnimatePresence>
             {hoveredProject && (
               <motion.div
@@ -337,12 +344,10 @@ export default function Projects() {
                 className="absolute left-[87.5%] top-[50%] -translate-x-1/2 -translate-y-1/2 rounded-2xl shadow-2xl pointer-events-none z-10 hidden md:block overflow-hidden"
                 style={{ width: "200px", height: "550px" }}
               >
-                <Image
+                <img
                   src={hoveredProject.image}
                   alt={`Screenshot of ${hoveredProject.title} project by Aman Nakoti`}
-                  fill
-                  sizes="200px"
-                  className="object-cover"
+                  className="w-full h-full object-cover"
                 />
               </motion.div>
             )}

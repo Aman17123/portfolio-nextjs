@@ -197,35 +197,37 @@ export default function Navbar() {
         className="fixed top-3 left-1/2 -translate-x-1/2 z-50 flex md:hidden"
         aria-label="Site navigation"
       >
-        <div className="px-6 py-3 bg-black/60 dark:bg-black/60 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center space-x-6">
+        <div className="px-3 py-2.5 bg-black/60 dark:bg-black/60 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center space-x-1.5 sm:space-x-2.5 max-w-[95vw] mx-auto overflow-x-auto scrollbar-none">
           {mainIcons.map(({ Icon, id, tooltip }, i) => (
             <motion.button
               key={i}
-              whileHover={{ scale: 1.25 }}
+              whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => handleScroll(id)}
               aria-label={`Navigate to ${tooltip}`}
-              className="cursor-pointer focus-visible:outline-2 focus-visible:outline-blue-400 focus-visible:outline-offset-2 rounded-sm"
+              className="cursor-pointer focus-visible:outline-2 focus-visible:outline-blue-400 focus-visible:outline-offset-2 rounded-sm shrink-0"
             >
               <Icon
-                className={`w-5 h-5 ${activeSection === id ? "text-blue-400 dark:text-blue-400 text-blue-600" : "text-gray-900 dark:text-white"}`}
+                className={`w-4 h-4 sm:w-5 sm:h-5 ${activeSection === id ? "text-blue-400 dark:text-blue-400 text-blue-600" : "text-gray-900 dark:text-white"}`}
               />
             </motion.button>
           ))}
-          <ThemeToggle />
-          <div className="w-px h-5 bg-gray-600 dark:bg-gray-600 bg-gray-300" />
+          <div className="shrink-0">
+            <ThemeToggle />
+          </div>
+          <div className="w-px h-4 bg-gray-600 dark:bg-gray-600 bg-gray-300 shrink-0" />
           {socialIcons.map(({ Icon, link, color, tooltip }, i) => (
             <motion.a
               key={i}
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.25, color }}
+              whileHover={{ scale: 1.2, color }}
               whileTap={{ scale: 0.9 }}
-              className="cursor-pointer focus-visible:outline-2 focus-visible:outline-blue-400 focus-visible:outline-offset-2 rounded-sm"
+              className="cursor-pointer focus-visible:outline-2 focus-visible:outline-blue-400 focus-visible:outline-offset-2 rounded-sm shrink-0"
               aria-label={`Visit Aman Nakoti's ${tooltip}`}
             >
-              <Icon className="w-5 h-5 text-gray-900 dark:text-white" />
+              <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-900 dark:text-white" />
             </motion.a>
           ))}
         </div>
